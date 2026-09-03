@@ -287,19 +287,21 @@ main > section > h2,
 	background: var(--gray-bg);
 	margin-bottom: 1.4rem;
 }
-.card h3 { margin-bottom: .2em; }
+.card h3 { position: relative; margin-bottom: .2em; padding-right: 1.4em; }
 .card h3::after {
-	content: "\00a0\2192";
-	display: inline-block;
+	content: "\2192";
+	position: absolute;
+	top: 0;
+	right: 0;
 	color: var(--accent);
 	opacity: 0;
-	transform: translateX(-.25em);
+	transform: translateX(-.3em);
 	transition: opacity .15s ease-out, transform .15s ease-out;
 }
 .card p { font-size: 1.7rem; color: #333; }
 .card a { border: 0; }
 .card a:hover h3 { color: var(--accent); }
-.card a:hover h3::after { opacity: 1; transform: translateX(0); }
+.card a:hover h3::after,
 .card a:focus-visible h3::after { opacity: 1; transform: translateX(0); }
 
 /* Scroll-reveal (added only when JS enables it) */
