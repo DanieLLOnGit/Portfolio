@@ -229,10 +229,7 @@ p:last-child { margin-bottom: 0; }
 /* ---------- Contact ---------- */
 
 .contact {
-	background:
-		linear-gradient(var(--gray-light) .1rem, transparent .1rem) 0 0 / 100% 4rem,
-		linear-gradient(90deg, var(--gray-light) .1rem, transparent .1rem) 0 0 / 4rem 100%,
-		var(--gray-bg);
+	background: var(--gray-bg);
 	border-top: .3rem solid var(--black);
 }
 
@@ -244,9 +241,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .contact-card {
-	background: var(--gray-bg);
-	border: .1rem solid var(--gray-light);
-	border-radius: .8rem;
+	background: #fff;
+	border: .2rem solid var(--black);
 	padding: clamp(2rem, 4vw, 3.5rem);
 }
 .contact-card h2 { margin-top: 0; }
@@ -261,27 +257,28 @@ p:last-child { margin-bottom: 0; }
 	padding: 1rem 1.2rem;
 	background: #fff;
 	border: .1rem solid var(--gray-light);
-	border-radius: .5rem;
+	border-radius: 0;
 	resize: vertical;
 }
 .contact-form input:focus,
-.contact-form textarea:focus { outline: none; border-color: var(--accent); }
+.contact-form textarea:focus { outline: none; border-color: var(--black); }
 
 .btn {
 	align-self: flex-start;
-	background: var(--accent);
+	background: var(--black);
 	color: #fff;
 	font-family: var(--display);
-	font-size: 1.9rem;
-	font-weight: 600;
+	font-size: 2.1rem;
+	font-weight: 500;
 	letter-spacing: .02em;
-	padding: 1rem 2rem;
+	padding: 1.1rem 2.4rem .9rem;
 	border: 0;
-	border-radius: .5rem;
+	border-radius: 0;
 	cursor: pointer;
-	transition: opacity .15s;
+	transition: background-color .15s linear;
 }
-.btn:hover { opacity: .88; }
+.btn:hover,
+.btn:focus { background: var(--accent); }
 
 .info-grid {
 	display: grid;
