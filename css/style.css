@@ -236,6 +236,24 @@ main > section > h2 {
 .card a { border: 0; }
 .card a:hover h3 { color: var(--accent); }
 
+/* ---------- About ---------- */
+
+.about-grid {
+	display: grid;
+	grid-template-columns: 1fr minmax(22rem, 32rem);
+	gap: clamp(2.5rem, 6vw, 6rem);
+	align-items: start;
+}
+.about-bio p { font-size: clamp(1.9rem, 2.3vw, 2.2rem); }
+.about-photo { margin: 0; }
+.about-photo img {
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	background: var(--gray-bg);
+	border: .2rem solid var(--black);
+}
+
 /* ---------- Skills ---------- */
 
 .skill-grid {
@@ -362,6 +380,8 @@ main > section > h2 {
 @media (max-width: 720px) {
 	.contact-inner { grid-template-columns: 1fr; }
 	.skill-grid { grid-template-columns: 1fr; }
+	.about-grid { grid-template-columns: 1fr; }
+	.about-photo { order: -1; max-width: 26rem; }
 	.site-header { gap: 1.4rem 2rem; }
 	.search-trigger { font-size: 2.2rem; }
 }
