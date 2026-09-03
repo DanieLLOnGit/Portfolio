@@ -4,7 +4,8 @@
 
 	var groups = [
 		{ grid: document.getElementById('project-grid'), items: '.card' },
-		{ grid: document.querySelector('.skill-grid'), items: '.skill-col' }
+		{ grid: document.querySelector('.skill-grid'), items: '.skill-col' },
+		{ grid: document.querySelector('.exp-list'), items: '.exp-item' }
 	];
 
 	var io = new IntersectionObserver(function (entries) {

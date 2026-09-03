@@ -233,7 +233,7 @@ p:last-child { margin-bottom: 0; }
 
 /* Section headings in the big Miyazaki display style */
 main > section > h2,
-.about-bio > h2 {
+.about-inner > h2 {
 	font-size: clamp(3.4rem, 6vw, 5rem);
 	font-weight: 700;
 	line-height: .85;
@@ -269,16 +269,19 @@ main > section > h2,
 
 /* Scroll-reveal (added only when JS enables it) */
 .grid.is-revealing .card,
-.skill-grid.is-revealing .skill-col { opacity: 0; transform: translateY(6vh); }
+.skill-grid.is-revealing .skill-col,
+.exp-list.is-revealing .exp-item { opacity: 0; transform: translateY(6vh); }
 .grid.is-revealing .card.in-view,
-.skill-grid.is-revealing .skill-col.in-view {
+.skill-grid.is-revealing .skill-col.in-view,
+.exp-list.is-revealing .exp-item.in-view {
 	opacity: 1;
 	transform: translateY(0);
 	transition: opacity .55s ease-out, transform .55s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
 	.grid.is-revealing .card,
-	.skill-grid.is-revealing .skill-col { opacity: 1; transform: none; transition: none; }
+	.skill-grid.is-revealing .skill-col,
+	.exp-list.is-revealing .exp-item { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- About ---------- */
@@ -289,14 +292,15 @@ main > section > h2,
 	border-bottom: .3rem solid var(--black);
 }
 
-.about-grid {
-	display: grid;
-	grid-template-columns: 1fr minmax(22rem, 32rem);
-	gap: clamp(2.5rem, 6vw, 6rem);
-	align-items: start;
+.about-inner::after { content: ""; display: block; clear: both; }
+.about-inner > p { font-size: clamp(1.9rem, 2.3vw, 2.2rem); }
+
+/* Photo floats right; the bio wraps around it, Miyazaki alignright style */
+.about-photo {
+	float: right;
+	width: clamp(20rem, 36%, 34rem);
+	margin: .4rem 0 1.6rem clamp(2rem, 4vw, 4.5rem);
 }
-.about-bio p { font-size: clamp(1.9rem, 2.3vw, 2.2rem); }
-.about-photo { margin: 0; }
 .about-photo img {
 	width: 100%;
 	aspect-ratio: 4 / 5;
@@ -304,6 +308,7 @@ main > section > h2,
 	object-position: top;
 	background: var(--gray-bg);
 	border: .2rem solid var(--black);
+	display: block;
 }
 
 /* ---------- Skills ---------- */
@@ -331,6 +336,44 @@ main > section > h2,
 	border-top: .1rem solid var(--gray-light);
 }
 .skill-col li:first-child { border-top: 0; padding-top: 0; }
+
+/* ---------- Experience ---------- */
+
+.exp-list { display: flex; flex-direction: column; }
+.exp-item {
+	border-top: .3rem solid var(--black);
+	padding-top: 1.6rem;
+	margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+.exp-item:last-child { margin-bottom: 0; }
+.exp-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: .4rem 2rem;
+	flex-wrap: wrap;
+}
+.exp-item h3 {
+	font-family: var(--display);
+	font-size: clamp(2.4rem, 3.4vw, 3.2rem);
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	margin: 0;
+}
+.exp-dates {
+	font-family: var(--display);
+	font-size: 1.9rem;
+	font-weight: 500;
+	color: var(--gray);
+	white-space: nowrap;
+}
+.exp-org {
+	font-family: var(--display);
+	font-size: 2.1rem;
+	font-weight: 500;
+	margin: .3rem 0 1rem;
+}
+.exp-item p:last-child { font-size: 1.7rem; color: #333; margin: 0; }
 
 /* ---------- Footer ---------- */
 
@@ -431,8 +474,7 @@ main > section > h2,
 @media (max-width: 720px) {
 	.contact-inner { grid-template-columns: 1fr; }
 	.skill-grid { grid-template-columns: 1fr; }
-	.about-grid { grid-template-columns: 1fr; }
-	.about-photo { order: -1; max-width: 26rem; }
+	.about-photo { float: none; width: 100%; max-width: 24rem; margin: 0 0 2rem; }
 	.grid { column-count: 1; }
 	.site-header { gap: 1.4rem 2rem; }
 	.search-trigger { font-size: 2.2rem; }
