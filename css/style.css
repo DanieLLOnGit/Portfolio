@@ -238,6 +238,12 @@ main > section > h2 {
 
 /* ---------- About ---------- */
 
+.about {
+	background: var(--gray-bg);
+	border-top: .3rem solid var(--black);
+	border-bottom: .3rem solid var(--black);
+}
+
 .about-grid {
 	display: grid;
 	grid-template-columns: 1fr minmax(22rem, 32rem);
