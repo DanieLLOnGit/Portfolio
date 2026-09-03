@@ -521,6 +521,49 @@ main > section > h2,
 .info-grid .mono { font-family: 'Menlo', ui-monospace, monospace; font-size: 1.7rem; white-space: nowrap; }
 .info-grid a { border-bottom-color: var(--accent); }
 
+/* ---------- Project page ---------- */
+
+.project { padding-top: clamp(4rem, 9vw, 8rem); }
+.project-header { padding-bottom: clamp(3rem, 6vw, 5rem); }
+.project-header h1 { margin: .12em 0 .18em; }
+.project-body { padding-bottom: clamp(6rem, 12vw, 12rem); }
+.project-cover {
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+	background: var(--gray-bg);
+	border: .2rem solid var(--black);
+	margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.project-body h2 {
+	font-size: clamp(2.8rem, 4vw, 3.8rem);
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 1.5em 0 .45em;
+}
+.project-body h2:first-of-type { margin-top: .4em; }
+.project-body p { font-size: clamp(1.8rem, 2.2vw, 2rem); }
+.project-body ul {
+	margin: 0 0 1.2em 2rem;
+	font-size: clamp(1.8rem, 2.2vw, 2rem);
+	line-height: 1.5;
+}
+.project-body ul li { margin-bottom: .5rem; }
+.project-back {
+	margin-top: clamp(3rem, 6vw, 5rem);
+	border-top: .3rem solid var(--black);
+	padding-top: 1.4rem;
+}
+.project-back a {
+	font-family: var(--display);
+	font-size: 2rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .04em;
+	border: 0;
+}
+.project-back a:hover { color: var(--accent); }
+
 /* ---------- Utilities ---------- */
 
 .divider { border: 0; border-top: .3rem solid var(--black); margin-block: clamp(3rem, 6vw, 5rem); }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nimbus — Daniel Ye</title>
+	<meta name="description" content="Nimbus — Learn AWS Cloud Services. A project by Daniel Ye.">
+	<link rel="preload" as="font" type="font/woff2" href="../fonts/teko-700.woff2" crossorigin>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-home="../index.html">
+
+	<header class="site-header-outer">
+	<div class="wrap site-header">
+		<div class="site-left">
+			<a class="site-title" href="../index.html">Home</a>
+			<nav class="site-nav">
+				<a href="../index.html#about">About</a>
+				<a href="../index.html#projects">Projects</a>
+				<a href="../index.html#skills">Skills</a>
+				<a href="../index.html#experience">Experience</a>
+				<a href="../index.html#contact">Contact</a>
+			</nav>
+		</div>
+		<div class="site-actions">
+			<button id="search-trigger" type="button" class="search-trigger" aria-haspopup="dialog">Search</button>
+			<a class="icon-link" href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
+				</svg>
+			</a>
+			<a class="icon-link" href="../resume.pdf" download="Daniel-Ye-Resume.pdf" aria-label="Download Resume" data-tip="Download Resume">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M13.5 3.5a1.5 1.5 0 0 0-3 0v8.38L8.06 9.44a1.5 1.5 0 1 0-2.12 2.12l5 5a1.5 1.5 0 0 0 2.12 0l5-5a1.5 1.5 0 1 0-2.12-2.12l-2.44 2.44Z"/>
+					<path d="M4 14.5A1.5 1.5 0 0 1 5.5 16v3h13v-3a1.5 1.5 0 0 1 3 0v4A1.5 1.5 0 0 1 20 21.5H4A1.5 1.5 0 0 1 2.5 20v-4A1.5 1.5 0 0 1 4 14.5Z"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+	</header>
+
+	<main id="top" class="project">
+		<header class="wrap wrap--narrow project-header">
+			<p class="eyebrow">Project</p>
+			<h1>Nimbus</h1>
+			<p class="lead">Learn AWS Cloud Services.</p>
+		</header>
+
+		<div class="wrap wrap--narrow project-body">
+			<img class="project-cover" src="../img/placeholder.svg" alt="" width="300" height="200">
+
+			<h2>Overview</h2>
+			<p>Placeholder &mdash; a paragraph on what Nimbus is, who it&rsquo;s for, and why you built it.</p>
+
+			<h2>What it does</h2>
+			<ul>
+				<li>Placeholder feature or capability.</li>
+				<li>Placeholder feature or capability.</li>
+				<li>Placeholder feature or capability.</li>
+			</ul>
+
+			<h2>Built with</h2>
+			<p>Placeholder &mdash; the stack and AWS services used (e.g. Lambda, S3, DynamoDB, CDK).</p>
+
+			<h2>Links</h2>
+			<p>
+				<a href="#">Source</a> &nbsp;&middot;&nbsp;
+				<a href="#">Live site</a>
+			</p>
+
+			<p class="project-back"><a href="../index.html#projects">&larr; All projects</a></p>
+		</div>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<span>&copy; 2026 Daniel Ye</span>
+			<span class="footer-links">
+				<a href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer">LinkedIn</a>
+			</span>
+		</div>
+	</footer>
+
+	<div id="search-overlay" class="search-overlay" hidden>
+		<div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+			<input id="search-input" type="text" placeholder="Jump to a section&hellip;" autocomplete="off">
+			<ul id="search-results" class="search-results"></ul>
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			var header = document.querySelector('.site-header');
+			var outer = document.querySelector('.site-header-outer');
+			function setHeaderHeight() {
+				document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+			}
+			function onScroll() {
+				outer.classList.toggle('is-stuck', window.scrollY > 4);
+			}
+			setHeaderHeight();
+			onScroll();
+			window.addEventListener('resize', setHeaderHeight);
+			window.addEventListener('scroll', onScroll, { passive: true });
+		})();
+	</script>
+	<script src="../js/search.js"></script>
+</body>
+</html>

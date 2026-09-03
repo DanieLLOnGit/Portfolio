@@ -39,10 +39,13 @@
 		items[activeIndex].scrollIntoView({ block: 'nearest' });
 	}
 
+	var home = document.body.dataset.home || '';
+
 	function go(href) {
 		close();
 		var el = document.querySelector(href);
 		if (el) el.scrollIntoView({ behavior: 'smooth' });
+		else if (home) window.location.href = home + href;
 	}
 
 	function open() {
