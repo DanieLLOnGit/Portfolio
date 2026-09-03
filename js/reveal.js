@@ -26,6 +26,17 @@
 		});
 	});
 
+	// Project page: two columns slide in from opposite sides; shots fade up.
+	var pcols = document.querySelector('.project-cols');
+	if (pcols) {
+		pcols.classList.add('is-revealing');
+		io.observe(pcols);
+	}
+	document.querySelectorAll('.project-shot').forEach(function (el) {
+		el.classList.add('is-revealing');
+		io.observe(el);
+	});
+
 	// About section: text slides in from the left, photo from the right.
 	// Its own observer with a deeper margin so it fires once you've scrolled to it,
 	// not when the heading first peeks past a tall hero.
