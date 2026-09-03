@@ -529,6 +529,7 @@ main > section > h2,
 	font-size: clamp(4rem, 9vw, 7rem);
 	margin: .12em 0 .3em;
 }
+.project-header .lead { font-size: clamp(1.7rem, 2.2vw, 2rem); }
 .project-body { padding-bottom: clamp(6rem, 12vw, 12rem); }
 
 .project-shot {
