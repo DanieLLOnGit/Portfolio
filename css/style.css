@@ -635,7 +635,8 @@ main > section > h2,
 	font-size: clamp(1.7rem, 2vw, 1.9rem);
 	line-height: 1.5;
 }
-.project-col ul li { margin-bottom: .6rem; }
+.project-col ul li { margin-bottom: 1.1em; }
+.project-col ul li:last-child { margin-bottom: 0; }
 
 .project-back {
 	margin-top: clamp(3rem, 6vw, 5rem);
