@@ -1,0 +1,153 @@
+/* =================================================================
+   Personal site — visual language ported from the "Miyazaki"
+   WordPress theme by Anders Norén (GPLv2).
+   Palette: black / white / signature red-orange (#F9423A)
+   Display type: Teko (condensed)   Body type: Charis SIL (serif)
+   ================================================================= */
+
+/* ---------- Fonts ---------- */
+
+@font-face { font-family: 'Teko'; font-weight: 400; font-display: swap; src: url(../fonts/teko-regular.woff2) format('woff2'); }
+@font-face { font-family: 'Teko'; font-weight: 500; font-display: swap; src: url(../fonts/teko-500.woff2) format('woff2'); }
+@font-face { font-family: 'Teko'; font-weight: 600; font-display: swap; src: url(../fonts/teko-600.woff2) format('woff2'); }
+@font-face { font-family: 'Teko'; font-weight: 700; font-display: swap; src: url(../fonts/teko-700.woff2) format('woff2'); }
+
+@font-face { font-family: 'Charis SIL'; font-weight: 400; font-style: normal; font-display: swap; src: url(../fonts/charis-regular.woff2) format('woff2'); }
+@font-face { font-family: 'Charis SIL'; font-weight: 400; font-style: italic; font-display: swap; src: url(../fonts/charis-italic.woff2) format('woff2'); }
+@font-face { font-family: 'Charis SIL'; font-weight: 700; font-style: normal; font-display: swap; src: url(../fonts/charis-700.woff2) format('woff2'); }
+@font-face { font-family: 'Charis SIL'; font-weight: 700; font-style: italic; font-display: swap; src: url(../fonts/charis-700italic.woff2) format('woff2'); }
+
+/* ---------- Tokens ---------- */
+
+:root {
+	--black: #000;
+	--white: #fff;
+	--accent: #F9423A;
+	--accent-soft: #FCCED2;
+	--gray: #767676;
+	--gray-light: #ddd;
+	--gray-bg: #f1f1f1;
+
+	--display: 'Teko', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+	--body: 'Charis SIL', Georgia, 'Times New Roman', serif;
+
+	--measure: 40rem;
+	--gutter: clamp(1.5rem, 5vw, 4rem);
+}
+
+/* ---------- Reset ---------- */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 62.5%; scroll-behavior: smooth; }
+
+body {
+	background: var(--white);
+	color: var(--black);
+	font-family: var(--body);
+	font-size: 1.9rem;
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; text-decoration: none; border-bottom: .1em solid var(--accent); transition: color .15s, background-color .15s, border-color .15s; }
+a:hover { color: var(--accent); border-bottom-color: transparent; }
+
+::selection { background: var(--black); color: var(--white); }
+
+/* ---------- Layout ---------- */
+
+.wrap { width: calc(100% - 2 * var(--gutter)); max-width: 100rem; margin-inline: auto; }
+.wrap--narrow { max-width: 64rem; }
+
+section { padding-block: clamp(4rem, 9vw, 9rem); }
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3, h4 {
+	font-family: var(--display);
+	font-weight: 600;
+	line-height: .92;
+	letter-spacing: -0.01em;
+	text-transform: none;
+}
+
+h1 { font-size: clamp(5.5rem, 16vw, 13rem); font-weight: 700; }
+h2 { font-size: clamp(3.6rem, 7vw, 6rem); margin-bottom: .4em; }
+h3 { font-size: clamp(2.6rem, 4vw, 3.4rem); margin-bottom: .3em; }
+
+p { margin-bottom: 1.2em; }
+p:last-child { margin-bottom: 0; }
+
+.lead { font-size: clamp(2.1rem, 3vw, 2.6rem); line-height: 1.5; }
+
+.eyebrow {
+	font-family: var(--display);
+	font-size: 1.9rem;
+	font-weight: 600;
+	letter-spacing: .18em;
+	text-transform: uppercase;
+	color: var(--accent);
+	border: 0;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 2rem 3rem;
+	flex-wrap: wrap;
+	padding-block: 2.4rem;
+}
+
+.site-title {
+	font-family: var(--display);
+	font-size: 2.8rem;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+	border: 0;
+}
+
+.site-nav { display: flex; gap: 2.2rem; font-family: var(--display); font-size: 2rem; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.site-nav a { border: 0; }
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+
+.hero { padding-block: clamp(3rem, 8vw, 7rem) clamp(4rem, 10vw, 9rem); }
+.hero h1 { margin-bottom: .15em; }
+.hero .lead { max-width: var(--measure); }
+
+/* ---------- Cards / grid ---------- */
+
+.grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr)); }
+
+.card { border-top: .3rem solid var(--black); padding-top: 1.4rem; }
+.card h3 { margin-bottom: .2em; }
+.card p { font-size: 1.7rem; color: #333; }
+.card a { border: 0; }
+.card a:hover h3 { color: var(--accent); }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+	background: var(--black);
+	color: var(--white);
+	padding-block: clamp(3rem, 6vw, 5rem);
+	margin-top: clamp(4rem, 9vw, 9rem);
+}
+.site-footer a { border-bottom-color: var(--accent); }
+.site-footer a:hover { color: var(--accent); }
+.site-footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; font-family: var(--display); font-size: 1.9rem; letter-spacing: .03em; text-transform: uppercase; }
+
+/* ---------- Utilities ---------- */
+
+.divider { border: 0; border-top: .3rem solid var(--black); margin-block: clamp(3rem, 6vw, 5rem); }
+.stack > * + * { margin-top: 1.2em; }
