@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-label="Headshot placeholder">
-	<rect width="300" height="300" fill="#efefef"/>
-	<g fill="#d3d3d3">
-		<circle cx="150" cy="118" r="46"/>
-		<path d="M58 262c0-52 41-84 92-84s92 32 92 84z"/>
-	</g>
-</svg>
