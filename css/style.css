@@ -197,17 +197,6 @@ p:last-child { margin-bottom: 0; }
 }
 .search-results li.is-active,
 .search-results li:hover { background: var(--black); color: #fff; }
-.search-hint {
-	margin: 1rem 0 0;
-	font-family: 'Menlo', ui-monospace, monospace;
-	font-size: 1.2rem;
-	color: var(--gray);
-}
-.search-hint kbd {
-	border: .1rem solid var(--gray-light);
-	border-radius: .3rem;
-	padding: .1rem .5rem;
-}
 
 /* ---------- Hero ---------- */
 
