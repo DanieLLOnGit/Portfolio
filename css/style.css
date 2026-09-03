@@ -204,7 +204,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- Hero ---------- */
 
-.hero { padding-block: clamp(5rem, 12vw, 11rem) clamp(9rem, 22vw, 20rem); text-align: center; }
+.hero { padding-block: clamp(7rem, 16vw, 16rem) clamp(14rem, 34vw, 32rem); text-align: center; }
 .hero h1 { margin-bottom: .15em; }
 .hero .lead { max-width: var(--measure); margin-inline: auto; }
 
