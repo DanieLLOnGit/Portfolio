@@ -164,15 +164,21 @@ p:last-child { margin-bottom: 0; }
 	white-space: nowrap;
 	padding: .5rem .9rem;
 	opacity: 0;
+	visibility: hidden;
 	pointer-events: none;
-	transition: opacity .12s linear;
+	transition: opacity .12s linear, visibility 0s linear .12s;
 }
 .icon-link[data-tip]:hover::after,
-.icon-link[data-tip]:focus-visible::after { opacity: 1; }
+.icon-link[data-tip]:focus-visible::after {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity .12s linear;
+}
 
 /* Teko's caps sit above the line-box centre; nudge the icon up to match the
-   optical centre of the "Search" text next to it. */
-.site-actions .icon-link { transform: translateY(-0.12em); }
+   optical centre of the "Search" text next to it. Nudge the glyph, not the
+   link box, so the tooltip's containing block stays free of transforms. */
+.site-actions .icon-link svg { transform: translateY(-0.12em); }
 
 .search-trigger {
 	padding: 0;
