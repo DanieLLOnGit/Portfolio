@@ -268,14 +268,17 @@ main > section > h2,
 .card a:hover h3 { color: var(--accent); }
 
 /* Scroll-reveal (added only when JS enables it) */
-.grid.is-revealing .card { opacity: 0; transform: translateY(6vh); }
-.grid.is-revealing .card.in-view {
+.grid.is-revealing .card,
+.skill-grid.is-revealing .skill-col { opacity: 0; transform: translateY(6vh); }
+.grid.is-revealing .card.in-view,
+.skill-grid.is-revealing .skill-col.in-view {
 	opacity: 1;
 	transform: translateY(0);
 	transition: opacity .55s ease-out, transform .55s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
-	.grid.is-revealing .card { opacity: 1; transform: none; transition: none; }
+	.grid.is-revealing .card,
+	.skill-grid.is-revealing .skill-col { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- About ---------- */

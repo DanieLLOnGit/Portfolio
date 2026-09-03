@@ -1,12 +1,11 @@
 (function () {
-	var grid = document.getElementById('project-grid');
-	if (!grid || !('IntersectionObserver' in window)) return;
+	if (!('IntersectionObserver' in window)) return;
+	if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-	var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-	if (reduce.matches) return;
-
-	grid.classList.add('is-revealing');
-	var cards = grid.querySelectorAll('.card');
+	var groups = [
+		{ grid: document.getElementById('project-grid'), items: '.card' },
+		{ grid: document.querySelector('.skill-grid'), items: '.skill-col' }
+	];
 
 	var io = new IntersectionObserver(function (entries) {
 		entries.forEach(function (entry) {
@@ -17,8 +16,12 @@
 		});
 	}, { rootMargin: '0px 0px -12% 0px' });
 
-	cards.forEach(function (card, i) {
-		card.style.transitionDelay = (i % 2) * 80 + 'ms';
-		io.observe(card);
+	groups.forEach(function (group) {
+		if (!group.grid) return;
+		group.grid.classList.add('is-revealing');
+		group.grid.querySelectorAll(group.items).forEach(function (el, i) {
+			el.style.transitionDelay = (i % 3) * 80 + 'ms';
+			io.observe(el);
+		});
 	});
 })();
