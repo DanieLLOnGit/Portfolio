@@ -110,20 +110,8 @@ p:last-child { margin-bottom: 0; }
 	gap: 2.6rem;
 }
 
-.site-nav {
-	display: flex;
-	gap: 2.4rem;
-	font-family: var(--display);
-	font-size: 2rem;
-	font-weight: 500;
-}
-.site-nav a {
-	border: 0;
-	border-bottom: .12rem solid transparent;
-	transition: border-color .15s linear, color .15s linear;
-}
-.site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
+/* Home + section links: one uniform display style */
+.site-left a,
 .site-title {
 	font-family: var(--display);
 	font-size: 2.8rem;
@@ -132,6 +120,16 @@ p:last-child { margin-bottom: 0; }
 	text-transform: uppercase;
 	border: 0;
 }
+
+.site-nav {
+	display: flex;
+	gap: 2.6rem;
+}
+.site-nav a {
+	border-bottom: .12rem solid transparent;
+	transition: border-color .15s linear, color .15s linear;
+}
+.site-nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 .site-actions { display: flex; align-items: center; gap: 1.6rem; }
 
