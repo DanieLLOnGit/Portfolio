@@ -637,29 +637,27 @@ main > section > h2,
 }
 .project-col ul li { margin-bottom: 1.1em; }
 .project-col ul li:last-child { margin-bottom: 0; }
+.project-col ul:not(.tech-tags) li::marker { color: var(--accent); }
 
 .tech-tags {
 	list-style: none;
-	margin: 0 0 1.2rem;
+	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-wrap: wrap;
+	align-items: flex-start;
 	gap: .8rem;
 }
 .tech-tags li {
 	margin: 0;
 	font-family: 'Menlo', ui-monospace, monospace;
 	font-size: 1.5rem;
-	line-height: 1;
+	line-height: 1.2;
+	white-space: nowrap;
 	padding: .7rem 1.1rem;
 	background: var(--gray-bg);
 	border: .1rem solid var(--gray-light);
 	color: #333;
-}
-.project-col .tech-note {
-	font-size: 1.5rem;
-	color: var(--gray);
-	margin: 0;
 }
 
 .project-back {
