@@ -210,9 +210,9 @@ p:last-child { margin-bottom: 0; }
 
 /* Section headings in the big Miyazaki display style */
 main > section > h2 {
-	font-size: clamp(4.4rem, 11vw, 9rem);
+	font-size: clamp(3.4rem, 6vw, 5rem);
 	font-weight: 700;
-	line-height: .82;
+	line-height: .85;
 	letter-spacing: -0.02em;
 	margin-bottom: .55em;
 }
