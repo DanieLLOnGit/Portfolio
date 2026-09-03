@@ -236,6 +236,34 @@ main > section > h2 {
 .card a { border: 0; }
 .card a:hover h3 { color: var(--accent); }
 
+/* ---------- Skills ---------- */
+
+.skill-grid {
+	display: grid;
+	gap: clamp(2rem, 4vw, 3.5rem);
+	grid-template-columns: repeat(3, 1fr);
+}
+.skill-col { border-left: .2rem solid var(--black); padding-left: 1.6rem; }
+.skill-col h3 {
+	font-family: var(--display);
+	font-size: 1.6rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .12em;
+	color: var(--gray);
+	margin: 0 0 1.2rem;
+}
+.skill-col ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: .6rem;
+}
+.skill-col li { font-family: 'Menlo', ui-monospace, monospace; font-size: 1.5rem; color: #333; }
+.skill-col .prompt { color: var(--accent); }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -335,6 +363,7 @@ main > section > h2 {
 
 @media (max-width: 720px) {
 	.contact-inner { grid-template-columns: 1fr; }
+	.skill-grid { grid-template-columns: 1fr; }
 	.site-header { gap: 1.4rem 2rem; }
 	.search-trigger { font-size: 2.2rem; }
 }
