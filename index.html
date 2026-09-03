@@ -10,7 +10,8 @@
 </head>
 <body>
 
-	<header class="wrap site-header">
+	<header class="site-header-outer">
+	<div class="wrap site-header">
 		<div class="site-left">
 			<a class="site-title" href="#top">Home</a>
 			<nav class="site-nav">
@@ -35,6 +36,7 @@
 				</svg>
 			</a>
 		</div>
+	</div>
 	</header>
 
 	<main id="top">
@@ -251,6 +253,22 @@
 		</div>
 	</div>
 
+	<script>
+		(function () {
+			var header = document.querySelector('.site-header');
+			var outer = document.querySelector('.site-header-outer');
+			function setHeaderHeight() {
+				document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+			}
+			function onScroll() {
+				outer.classList.toggle('is-stuck', window.scrollY > 4);
+			}
+			setHeaderHeight();
+			onScroll();
+			window.addEventListener('resize', setHeaderHeight);
+			window.addEventListener('scroll', onScroll, { passive: true });
+		})();
+	</script>
 	<script src="js/search.js"></script>
 	<script src="js/reveal.js"></script>
 </body>

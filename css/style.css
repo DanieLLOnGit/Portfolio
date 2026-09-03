@@ -33,13 +33,14 @@
 
 	--measure: 40rem;
 	--gutter: clamp(1.5rem, 5vw, 4rem);
+	--header-h: 9.4rem;
 }
 
 /* ---------- Reset ---------- */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { font-size: 62.5%; scroll-behavior: smooth; }
+html { font-size: 62.5%; scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 
 body {
 	background: var(--white);
@@ -95,6 +96,16 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* ---------- Header ---------- */
+
+.site-header-outer {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	background: var(--white);
+	border-bottom: .1rem solid transparent;
+	transition: border-color .2s linear;
+}
+.site-header-outer.is-stuck { border-bottom-color: var(--black); }
 
 .site-header {
 	display: flex;
@@ -227,7 +238,15 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- Hero ---------- */
 
-.hero { padding-block: clamp(7rem, 16vw, 16rem) clamp(14rem, 34vw, 32rem); text-align: center; }
+.hero {
+	min-height: calc(100vh - var(--header-h));
+	min-height: calc(100dvh - var(--header-h));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-block: clamp(4rem, 10vw, 9rem);
+	text-align: center;
+}
 .hero h1 { margin-bottom: .15em; }
 .hero .lead { max-width: var(--measure); margin-inline: auto; }
 
