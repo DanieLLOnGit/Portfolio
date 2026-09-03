@@ -545,19 +545,23 @@ main > section > h2,
 /* ---------- Carousel ---------- */
 
 .carousel { margin-bottom: clamp(3rem, 7vw, 6rem); }
+.carousel-frame { position: relative; }
 .carousel-viewport {
-	position: relative;
 	border: .2rem solid var(--black);
 	background: var(--gray-bg);
-	overflow: hidden;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior-x: contain;
 }
-.carousel-track {
-	display: flex;
-	transition: transform .4s ease;
-}
+.carousel-viewport::-webkit-scrollbar { display: none; }
+.carousel-track { display: flex; }
 .carousel-slide {
 	flex: 0 0 100%;
 	margin: 0;
+	scroll-snap-align: start;
 }
 .carousel-slide img {
 	display: block;
@@ -587,6 +591,8 @@ main > section > h2,
 }
 .carousel-arrow:hover,
 .carousel-arrow:focus-visible { background: var(--accent); outline: none; }
+.carousel-arrow:disabled { opacity: .28; cursor: default; }
+.carousel-arrow:disabled:hover { background: var(--black); }
 .carousel-prev { left: 0; }
 .carousel-next { right: 0; }
 .carousel-dots {
