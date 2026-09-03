@@ -525,7 +525,10 @@ main > section > h2,
 
 .project { padding-top: clamp(4rem, 9vw, 8rem); }
 .project-header { padding-bottom: clamp(3rem, 6vw, 5rem); }
-.project-header h1 { margin: .12em 0 .18em; }
+.project-header h1 {
+	font-size: clamp(4rem, 9vw, 7rem);
+	margin: .12em 0 .3em;
+}
 .project-body { padding-bottom: clamp(6rem, 12vw, 12rem); }
 .project-cover {
 	width: 100%;
