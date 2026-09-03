@@ -136,6 +136,10 @@ p:last-child { margin-bottom: 0; }
 .icon-link svg { display: block; }
 .icon-link:hover { color: var(--accent); }
 
+/* Teko's caps sit above the line-box centre; nudge the icon up to match the
+   optical centre of the "Search" text next to it. */
+.site-actions .icon-link { transform: translateY(-0.12em); }
+
 .search-trigger {
 	padding: 0;
 	background: none;
