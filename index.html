@@ -4,29 +4,36 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Daniel Ye</title>
-	<meta name="description" content="Personal site of Daniel Ye.">
+	<meta name="description" content="Daniel Ye — Electrical Engineering, Columbia University.">
 	<link rel="preload" as="font" type="font/woff2" href="fonts/teko-700.woff2" crossorigin>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 	<header class="wrap site-header">
-		<a class="site-title" href="index.html">Daniel Ye</a>
-		<nav class="site-nav">
-			<a href="index.html" aria-current="page">Home</a>
-			<a href="about.html">About</a>
-			<a href="mailto:daniely4588@gmail.com">Contact</a>
-		</nav>
+		<a class="site-title" href="#top">Daniel Ye</a>
+		<div class="site-actions">
+			<button id="search-trigger" type="button" class="search-trigger" aria-label="Search" aria-haspopup="dialog">
+				<span aria-hidden="true" class="search-prompt">&gt;_</span>
+				<span class="search-label">Search</span>
+				<kbd>&#8984;K</kbd>
+			</button>
+			<a class="icon-link" href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
+				</svg>
+			</a>
+		</div>
 	</header>
 
-	<main>
-		<section class="wrap hero">
-			<p class="eyebrow">Personal site</p>
+	<main id="top">
+		<section class="wrap hero" id="about">
+			<p class="eyebrow">Electrical Engineering &mdash; Columbia University</p>
 			<h1>Daniel&nbsp;Ye</h1>
-			<p class="lead">Short one-liner about who you are and what you do. Replace this with the real thing once the site is live.</p>
+			<p class="lead">Short one-liner about who you are and what you do. Replace this with the real thing.</p>
 		</section>
 
-		<section class="wrap">
+		<section class="wrap" id="work">
 			<h2>Work</h2>
 			<div class="grid">
 				<article class="card">
@@ -50,11 +57,53 @@
 			</div>
 		</section>
 
-		<section class="wrap wrap--narrow">
+		<section class="wrap wrap--narrow" id="writing">
 			<h2>Writing</h2>
 			<div class="stack">
-				<p><a href="#">A post title goes here</a> — one line on what it covers.</p>
-				<p><a href="#">Another post title</a> — one line on what it covers.</p>
+				<p><a href="#">A post title goes here</a> &mdash; one line on what it covers.</p>
+				<p><a href="#">Another post title</a> &mdash; one line on what it covers.</p>
+			</div>
+		</section>
+
+		<section class="contact" id="contact">
+			<div class="wrap contact-inner">
+				<div class="contact-card">
+					<h2>Get in touch</h2>
+					<form class="contact-form" method="post" action="https://formspree.io/f/yourid">
+						<label>
+							<span>Name</span>
+							<input type="text" name="name" required>
+						</label>
+						<label>
+							<span>Email</span>
+							<input type="email" name="email" required>
+						</label>
+						<label>
+							<span>Message</span>
+							<textarea name="message" rows="5" required></textarea>
+						</label>
+						<button type="submit" class="btn">Send message</button>
+					</form>
+				</div>
+
+				<dl class="info-grid">
+					<div>
+						<dt>Location</dt>
+						<dd>Based in NYC</dd>
+					</div>
+					<div>
+						<dt>Phone</dt>
+						<dd class="mono">(000)&nbsp;000-0000</dd>
+					</div>
+					<div>
+						<dt>Email</dt>
+						<dd><a href="mailto:daniely4588@gmail.com">daniely4588@gmail.com</a></dd>
+					</div>
+					<div>
+						<dt>Resume</dt>
+						<dd><a href="resume.pdf" download>Download PDF</a></dd>
+					</div>
+				</dl>
 			</div>
 		</section>
 	</main>
@@ -62,9 +111,21 @@
 	<footer class="site-footer">
 		<div class="wrap">
 			<span>&copy; 2026 Daniel Ye</span>
-			<span><a href="https://github.com/DanieLLOnGit">GitHub</a></span>
+			<span class="footer-links">
+				<a href="https://github.com/DanieLLOnGit" target="_blank" rel="noreferrer">GitHub</a>
+				<a href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer">LinkedIn</a>
+			</span>
 		</div>
 	</footer>
 
+	<div id="search-overlay" class="search-overlay" hidden>
+		<div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+			<input id="search-input" type="text" placeholder="Jump to a section&hellip;" autocomplete="off">
+			<ul id="search-results" class="search-results"></ul>
+			<p class="search-hint"><kbd>&#8984;K</kbd> to search &nbsp;·&nbsp; <kbd>Esc</kbd> to close</p>
+		</div>
+	</div>
+
+	<script src="js/search.js"></script>
 </body>
 </html>
