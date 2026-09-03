@@ -395,10 +395,9 @@ main > section > h2,
 }
 
 .contact-inner {
-	display: grid;
-	gap: clamp(2.5rem, 6vw, 6rem);
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-	align-items: start;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(2.5rem, 5vw, 4rem);
 }
 
 .contact-card {
@@ -408,7 +407,7 @@ main > section > h2,
 }
 .contact-card h2 { margin-top: 0; }
 
-.contact-form { display: flex; flex-direction: column; gap: 1.6rem; max-width: 42rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.6rem; }
 .contact-form label { display: flex; flex-direction: column; gap: .5rem; }
 .contact-form label span { font-size: 1.6rem; color: var(--gray); }
 .contact-form input,
@@ -443,8 +442,8 @@ main > section > h2,
 
 .info-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: clamp(2rem, 4vw, 3.5rem) 2rem;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 2rem 3rem;
 	margin: 0;
 }
 .info-grid dt {
@@ -472,7 +471,7 @@ main > section > h2,
 }
 
 @media (max-width: 720px) {
-	.contact-inner { grid-template-columns: 1fr; }
+	.info-grid { grid-template-columns: 1fr 1fr; }
 	.skill-grid { grid-template-columns: 1fr; }
 	.about-photo { float: none; width: 100%; max-width: 24rem; margin: 0 0 2rem; }
 	.grid { column-count: 1; }
