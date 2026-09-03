@@ -57,7 +57,21 @@
 			viewport.scrollLeft = index * viewport.clientWidth;
 		});
 
-		viewport.scrollLeft = 0;
-		setActive(0);
+		// Keep it pinned to the first slide while media (images, YouTube iframe)
+		// loads in and nudges the scroll position.
+		var settled = false;
+		function pinToStart() {
+			if (settled) return;
+			viewport.scrollLeft = 0;
+			setActive(0);
+		}
+		viewport.addEventListener('pointerdown', function () { settled = true; }, { once: true });
+		pinToStart();
+		requestAnimationFrame(pinToStart);
+		window.addEventListener('load', pinToStart);
+		carousel.querySelectorAll('img, iframe').forEach(function (el) {
+			el.addEventListener('load', pinToStart);
+		});
+		setTimeout(pinToStart, 500);
 	});
 })();

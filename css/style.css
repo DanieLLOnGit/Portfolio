@@ -532,6 +532,9 @@ main > section > h2,
 .project-header .lead { font-size: clamp(1.7rem, 2.2vw, 2rem); }
 .project-links {
 	margin: 1.4rem 0 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: .6rem 2.4rem;
 	font-family: var(--display);
 	font-size: 1.9rem;
 	font-weight: 500;
@@ -573,11 +576,13 @@ main > section > h2,
 	margin: 0;
 	scroll-snap-align: start;
 }
-.carousel-slide img {
+.carousel-slide img,
+.carousel-slide iframe {
 	display: block;
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
+	border: 0;
 }
 .carousel-arrow {
 	position: absolute;
