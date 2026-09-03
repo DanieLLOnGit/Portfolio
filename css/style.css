@@ -240,29 +240,27 @@ main > section > h2 {
 
 .skill-grid {
 	display: grid;
-	gap: clamp(2rem, 4vw, 3.5rem);
+	gap: clamp(2rem, 4vw, 4rem);
 	grid-template-columns: repeat(3, 1fr);
 }
-.skill-col { border-left: .2rem solid var(--black); padding-left: 1.6rem; }
+.skill-col { border-top: .3rem solid var(--black); padding-top: 1.6rem; }
 .skill-col h3 {
 	font-family: var(--display);
-	font-size: 1.6rem;
+	font-size: clamp(2.4rem, 3vw, 3rem);
 	font-weight: 600;
-	text-transform: uppercase;
-	letter-spacing: .12em;
-	color: var(--gray);
+	letter-spacing: -0.01em;
 	margin: 0 0 1.2rem;
 }
-.skill-col ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	gap: .6rem;
+.skill-col ul { list-style: none; margin: 0; padding: 0; }
+.skill-col li {
+	font-family: var(--display);
+	font-size: 2rem;
+	font-weight: 500;
+	line-height: 1.15;
+	padding: .6rem 0;
+	border-top: .1rem solid var(--gray-light);
 }
-.skill-col li { font-family: 'Menlo', ui-monospace, monospace; font-size: 1.5rem; color: #333; }
-.skill-col .prompt { color: var(--accent); }
+.skill-col li:first-child { border-top: 0; padding-top: 0; }
 
 /* ---------- Footer ---------- */
 
