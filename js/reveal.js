@@ -25,4 +25,21 @@
 			io.observe(el);
 		});
 	});
+
+	// About section: text slides in from the left, photo from the right.
+	// Its own observer with a deeper margin so it fires once you've scrolled to it,
+	// not when the heading first peeks past a tall hero.
+	var about = document.querySelector('.about-inner');
+	if (about) {
+		about.classList.add('is-revealing');
+		var aboutIO = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('in-view');
+					aboutIO.unobserve(entry.target);
+				}
+			});
+		}, { rootMargin: '0px 0px -32% 0px' });
+		aboutIO.observe(about);
+	}
 })();

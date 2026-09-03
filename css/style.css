@@ -290,6 +290,27 @@ main > section > h2,
 	background: var(--gray-bg);
 	border-top: .3rem solid var(--black);
 	border-bottom: .3rem solid var(--black);
+	overflow: hidden;
+}
+
+/* Scroll-in: text from the left, photo from the right */
+.about-inner.is-revealing > h2,
+.about-inner.is-revealing > p { opacity: 0; transform: translateX(-5rem); }
+.about-inner.is-revealing .about-photo { opacity: 0; transform: translateX(5rem); }
+.about-inner.is-revealing.in-view > h2,
+.about-inner.is-revealing.in-view > p,
+.about-inner.is-revealing.in-view .about-photo {
+	opacity: 1;
+	transform: none;
+	transition: opacity .6s ease-out, transform .6s ease-out;
+}
+.about-inner.is-revealing.in-view > p:nth-of-type(1) { transition-delay: 70ms; }
+.about-inner.is-revealing.in-view > p:nth-of-type(2) { transition-delay: 130ms; }
+.about-inner.is-revealing.in-view > p:nth-of-type(3) { transition-delay: 190ms; }
+@media (prefers-reduced-motion: reduce) {
+	.about-inner.is-revealing > h2,
+	.about-inner.is-revealing > p,
+	.about-inner.is-revealing .about-photo { opacity: 1; transform: none; transition: none; }
 }
 
 .about-inner::after { content: ""; display: block; clear: both; }
