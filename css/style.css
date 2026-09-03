@@ -219,7 +219,6 @@ p:last-child { margin-bottom: 0; }
 	background: var(--black);
 	color: var(--white);
 	padding-block: clamp(3rem, 6vw, 5rem);
-	margin-top: clamp(4rem, 9vw, 9rem);
 }
 .site-footer a { border-bottom-color: var(--accent); }
 .site-footer a:hover { color: var(--accent); }
