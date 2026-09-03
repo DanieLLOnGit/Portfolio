@@ -1,8 +1,9 @@
 (function () {
 	var ITEMS = [
 		{ label: 'About', keywords: 'about intro bio columbia electrical engineering', href: '#about' },
-		{ label: 'Work', keywords: 'work projects portfolio', href: '#work' },
-		{ label: 'Writing', keywords: 'writing posts blog articles', href: '#writing' },
+		{ label: 'Projects', keywords: 'projects work portfolio', href: '#projects' },
+		{ label: 'Skills', keywords: 'skills languages tools', href: '#skills' },
+		{ label: 'Experience', keywords: 'experience roles jobs internships', href: '#experience' },
 		{ label: 'Contact', keywords: 'contact email phone resume get in touch', href: '#contact' }
 	];
 
