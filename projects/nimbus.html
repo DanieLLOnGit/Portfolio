@@ -47,7 +47,21 @@
 		</header>
 
 		<div class="wrap project-body">
-			<img class="project-shot" src="../img/shot-placeholder.svg" alt="Nimbus landing page" width="1600" height="900">
+			<div class="carousel" id="nimbus-carousel">
+				<div class="carousel-viewport">
+					<div class="carousel-track">
+						<figure class="carousel-slide">
+							<img src="../img/photo1.jpeg" alt="Nimbus landing page" width="1400" height="797">
+						</figure>
+						<figure class="carousel-slide">
+							<img src="../img/photo2.jpeg" alt="Nimbus interactive lesson builder" width="1400" height="798">
+						</figure>
+					</div>
+					<button type="button" class="carousel-arrow carousel-prev" aria-label="Previous photo">&lsaquo;</button>
+					<button type="button" class="carousel-arrow carousel-next" aria-label="Next photo">&rsaquo;</button>
+				</div>
+				<div class="carousel-dots" aria-label="Choose photo"></div>
+			</div>
 
 			<div class="project-cols">
 				<div class="project-col">
@@ -71,8 +85,6 @@
 					</ul>
 				</div>
 			</div>
-
-			<img class="project-shot" src="../img/shot-placeholder.svg" alt="Nimbus interactive lesson builder" width="1600" height="900">
 
 			<p class="project-back"><a href="../index.html#projects">&larr; All projects</a></p>
 		</div>
@@ -112,5 +124,6 @@
 	</script>
 	<script src="../js/search.js"></script>
 	<script src="../js/reveal.js"></script>
+	<script src="../js/carousel.js"></script>
 </body>
 </html>

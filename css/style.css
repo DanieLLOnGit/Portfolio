@@ -542,6 +542,71 @@ main > section > h2,
 	margin-bottom: clamp(3rem, 7vw, 6rem);
 }
 
+/* ---------- Carousel ---------- */
+
+.carousel { margin-bottom: clamp(3rem, 7vw, 6rem); }
+.carousel-viewport {
+	position: relative;
+	border: .2rem solid var(--black);
+	background: var(--gray-bg);
+	overflow: hidden;
+}
+.carousel-track {
+	display: flex;
+	transition: transform .4s ease;
+}
+.carousel-slide {
+	flex: 0 0 100%;
+	margin: 0;
+}
+.carousel-slide img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 4.4rem;
+	height: 4.4rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 0 .3rem;
+	background: var(--black);
+	color: #fff;
+	border: 0;
+	border-radius: 0;
+	font-family: var(--display);
+	font-size: 3rem;
+	line-height: 1;
+	cursor: pointer;
+	transition: background-color .15s linear;
+}
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible { background: var(--accent); outline: none; }
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+.carousel-dots {
+	display: flex;
+	justify-content: center;
+	gap: .8rem;
+	margin-top: 1.4rem;
+}
+.carousel-dots button {
+	width: 1.4rem;
+	height: 1.4rem;
+	padding: 0;
+	background: transparent;
+	border: .2rem solid var(--black);
+	border-radius: 0;
+	cursor: pointer;
+	transition: background-color .15s linear;
+}
+.carousel-dots button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); }
+
 .project-cols {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -590,15 +655,18 @@ main > section > h2,
 	transform: none;
 	transition: opacity .6s ease-out, transform .6s ease-out;
 }
-.project-shot.is-revealing { opacity: 0; transform: translateY(4rem); }
-.project-shot.is-revealing.in-view {
+.project-shot.is-revealing,
+.carousel.is-revealing { opacity: 0; transform: translateY(4rem); }
+.project-shot.is-revealing.in-view,
+.carousel.is-revealing.in-view {
 	opacity: 1;
 	transform: none;
 	transition: opacity .6s ease-out, transform .6s ease-out;
 }
 @media (prefers-reduced-motion: reduce) {
 	.project-cols.is-revealing .project-col,
-	.project-shot.is-revealing { opacity: 1; transform: none; transition: none; }
+	.project-shot.is-revealing,
+	.carousel.is-revealing { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- Utilities ---------- */
