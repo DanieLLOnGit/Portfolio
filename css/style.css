@@ -204,9 +204,18 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- Hero ---------- */
 
-.hero { padding-block: clamp(3rem, 8vw, 7rem) clamp(4rem, 10vw, 9rem); }
+.hero { padding-block: clamp(3rem, 8vw, 7rem) clamp(4rem, 10vw, 9rem); text-align: center; }
 .hero h1 { margin-bottom: .15em; }
-.hero .lead { max-width: var(--measure); }
+.hero .lead { max-width: var(--measure); margin-inline: auto; }
+
+/* Section headings in the big Miyazaki display style */
+main > section > h2 {
+	font-size: clamp(4.4rem, 11vw, 9rem);
+	font-weight: 700;
+	line-height: .82;
+	letter-spacing: -0.02em;
+	margin-bottom: .55em;
+}
 
 /* ---------- Cards / grid ---------- */
 
