@@ -1,5 +1,5 @@
 /* =================================================================
-   Personal site — visual language ported from the "Miyazaki"
+   Personal site - visual language ported from the "Miyazaki"
    WordPress theme by Anders Norén (GPLv2).
    Palette: black / white / signature red-orange (#F9423A)
    Display type: Teko (condensed)   Body type: Charis SIL (serif)
@@ -268,7 +268,7 @@ main > section > h2,
 
 /* ---------- Cards / grid ---------- */
 
-/* Masonry-style columns — cards keep their image's natural height */
+/* Masonry-style columns - cards keep their image's natural height */
 .grid {
 	column-count: 2;
 	column-gap: clamp(2rem, 5vw, 5rem);
