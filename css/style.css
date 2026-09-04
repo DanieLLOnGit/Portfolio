@@ -599,7 +599,9 @@ main > section > h2,
 	background: var(--gray-bg);
 }
 
-/* Portrait media (phone photos/video): show the whole frame instead of cropping */
+/* Portrait media (phone photos/video): show the whole frame instead of cropping,
+   and keep the overall carousel from towering over the page */
+.carousel--portrait { max-width: 34rem; margin-inline: auto; }
 .carousel--portrait .carousel-slide img,
 .carousel--portrait .carousel-slide video {
 	aspect-ratio: 3 / 4;
