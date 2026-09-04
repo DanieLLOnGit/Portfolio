@@ -589,12 +589,21 @@ main > section > h2,
 	scroll-snap-align: start;
 }
 .carousel-slide img,
-.carousel-slide iframe {
+.carousel-slide iframe,
+.carousel-slide video {
 	display: block;
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	object-fit: cover;
 	border: 0;
+	background: var(--gray-bg);
+}
+
+/* Portrait media (phone photos/video): show the whole frame instead of cropping */
+.carousel--portrait .carousel-slide img,
+.carousel--portrait .carousel-slide video {
+	aspect-ratio: 3 / 4;
+	object-fit: contain;
 }
 .carousel-arrow {
 	position: absolute;

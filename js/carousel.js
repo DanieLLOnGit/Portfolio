@@ -72,6 +72,9 @@
 		carousel.querySelectorAll('img, iframe').forEach(function (el) {
 			el.addEventListener('load', pinToStart);
 		});
+		carousel.querySelectorAll('video').forEach(function (el) {
+			el.addEventListener('loadedmetadata', pinToStart);
+		});
 		setTimeout(pinToStart, 500);
 	});
 })();
