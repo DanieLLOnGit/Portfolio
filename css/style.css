@@ -649,6 +649,9 @@ main > section > h2,
 .carousel--gallery .carousel-track {
 	gap: clamp(.5rem, 1.2vw, 1rem);
 	padding-inline: max(var(--gutter), calc(50vw - 50rem));
+	/* when the images don't fill the width, sit them centred; `safe` keeps
+	   the start reachable once there are enough to overflow and scroll */
+	justify-content: safe center;
 }
 .carousel--gallery .carousel-slide {
 	flex: 0 0 auto;
