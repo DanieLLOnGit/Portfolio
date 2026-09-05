@@ -100,13 +100,15 @@
 				<div class="project-col">
 					<h2>Key Features</h2>
 					<ul>
-						<li>Two independent CSDv2 capacitive proximity widgets, one per jaw, each reading an exposed copper antenna at the jaw tip. Detection is the difference between the raw count and a locked baseline, rising as an object approaches, no contact required.</li>
-						<li>Per-jaw velocity follows a quadratic curve, vel = VEL_MAX &times; (1 &minus; ratio)&sup2; + VEL_MIN, so the jaws move quickly while the object is far and decelerate smoothly as they close in.</li>
-						<li>On boot the firmware waits three seconds, samples 20 scans of true-idle data, then locks the baseline, so a hand near the sensor at power-on can&rsquo;t corrupt the reference.</li>
-						<li>Software PWM dims the two LED proximity indicators inside the CapSense hardware busy-wait window, so no extra timer peripheral is needed. UART streams the proximity data in a compact <code>P:&lt;d1&gt;,&lt;d2&gt;</code> format at about 15 Hz for the Python layer.</li>
-						<li>A grip-and-release state machine (detect &rarr; hold 3 s &rarr; open &rarr; cooldown) uses a hold timer that ignores momentary sensor dropouts. A second controller keeps a target proximity on both jaws with proportional control, reopening and re-acquiring automatically when the object is lost.</li>
-						<li>IDAC saturation once pinned the raw count at the 12-bit ceiling and blinded the sensor. Root cause: the modulator current was set too low, overdriving the CSD integrator mid-scan. Fixed by restoring IDAC_MOD0 and the sensing clock and raising the conversion count (100 &rarr; 300) to recover SNR instead.</li>
-						<li>Custom 2-layer PSoC sensor board in KiCad (~40 &times; 30 mm): antenna traces routed as wide copper fills at the jaw tips with a ground keepout underneath, the 2.2 nF Cmod cap placed right at the pin, internal-LDO VCCD decoupled separately, and a 1.27 mm SWD header for the MiniProg4.</li>
+						<li>The first prototype ran on a smaller PSoC, programmed in C with Cypress&rsquo;s development tools. It had only one hardware timing block, so it could support a single proximity sensor, and its processor wasn&rsquo;t fast enough to keep up with software UART, which made talking to a computer unreliable.</li>
+						<li>Moved to a more capable PSoC 4000, which has several timing blocks, so one sensor can sit on each finger. Soldered the chip onto a breakout board and built a breadboard version of the full gripper to develop against.</li>
+						<li>The sensors kept pegging at their maximum reading and going blind. Raising the sensor drive current (IDAC) keeps the internal integrator in its usable range, so the raw reading actually tracks how close an object is instead of just railing.</li>
+						<li>Conductive objects vary a lot, from a bare hand to solid metal, and they load the sensor very differently. A routine watches for the reading maxing out, a sign the object is highly conductive like metal, and lowers the sensitivity on the fly so the sensor keeps working across that whole range.</li>
+						<li>Adapted an open-source parallel-jaw gripper and modelled the parts around it: a base for the gripper, a power hub for the Dynamixel servos, and a mount for the breadboard and chip.</li>
+						<li>A Python program using the Dynamixel SDK and pySerial reads the proximity data over UART from the PSoC and sends motor commands at the same time, all in one loop.</li>
+						<li>Two control modes: a grip-and-release cycle (detect an object &rarr; close &rarr; hold 3 s &rarr; open &rarr; pause) and a follow mode that holds a set distance from a moving hand using proportional control.</li>
+						<li>Jaw speed follows a quadratic curve, quick while the object is far away and easing to a gentle stop as it gets close.</li>
+						<li>Designed a PCB to replace the breadboard wiring with one compact board. The boards have been fabricated and delivered, and components are being soldered on now.</li>
 					</ul>
 				</div>
 			</div>
