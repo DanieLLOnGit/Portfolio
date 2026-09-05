@@ -567,6 +567,17 @@ main > section > h2,
 	margin-bottom: clamp(3rem, 7vw, 6rem);
 }
 
+/* Single portrait photo (no carousel) */
+.project-photo {
+	display: block;
+	width: 100%;
+	max-width: 34rem;
+	height: auto;
+	margin: 0 auto clamp(3rem, 7vw, 6rem);
+	background: var(--gray-bg);
+	border: .2rem solid var(--black);
+}
+
 /* ---------- Carousel ---------- */
 
 .carousel { margin-bottom: clamp(3rem, 7vw, 6rem); }
@@ -603,7 +614,8 @@ main > section > h2,
    and keep the overall carousel from towering over the page */
 .carousel--portrait { max-width: 34rem; margin-inline: auto; }
 .carousel--portrait .carousel-slide img,
-.carousel--portrait .carousel-slide video {
+.carousel--portrait .carousel-slide video,
+.carousel--portrait .carousel-slide iframe {
 	aspect-ratio: 3 / 4;
 	object-fit: contain;
 }
@@ -737,9 +749,11 @@ main > section > h2,
 	transition: opacity .6s ease-out, transform .6s ease-out;
 }
 .project-shot.is-revealing,
-.carousel.is-revealing { opacity: 0; transform: translateY(4rem); }
+.carousel.is-revealing,
+.project-photo.is-revealing { opacity: 0; transform: translateY(4rem); }
 .project-shot.is-revealing.in-view,
-.carousel.is-revealing.in-view {
+.carousel.is-revealing.in-view,
+.project-photo.is-revealing.in-view {
 	opacity: 1;
 	transform: none;
 	transition: opacity .6s ease-out, transform .6s ease-out;
@@ -747,7 +761,8 @@ main > section > h2,
 @media (prefers-reduced-motion: reduce) {
 	.project-cols.is-revealing .project-col,
 	.project-shot.is-revealing,
-	.carousel.is-revealing { opacity: 1; transform: none; transition: none; }
+	.carousel.is-revealing,
+	.project-photo.is-revealing { opacity: 1; transform: none; transition: none; }
 }
 
 /* ---------- Utilities ---------- */

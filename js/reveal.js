@@ -32,7 +32,7 @@
 		pcols.classList.add('is-revealing');
 		io.observe(pcols);
 	}
-	document.querySelectorAll('.project-shot, .carousel').forEach(function (el) {
+	document.querySelectorAll('.project-shot, .carousel, .project-photo').forEach(function (el) {
 		el.classList.add('is-revealing');
 		io.observe(el);
 	});

@@ -12,11 +12,13 @@
 		}
 
 		var index = 0;
+		// Once the viewer interacts, stop auto-pinning to the first slide.
+		var settled = false;
 
 		var dots = slides.map(function (_, i) {
 			var dot = document.createElement('button');
 			dot.type = 'button';
-			dot.setAttribute('aria-label', 'Photo ' + (i + 1));
+			dot.setAttribute('aria-label', 'Slide ' + (i + 1));
 			dot.addEventListener('click', function () { scrollToSlide(i); });
 			dotsWrap.appendChild(dot);
 			return dot;
@@ -32,6 +34,7 @@
 		}
 
 		function scrollToSlide(i) {
+			settled = true;
 			var target = Math.max(0, Math.min(slides.length - 1, i));
 			viewport.scrollTo({ left: target * viewport.clientWidth, behavior: 'smooth' });
 		}
@@ -43,6 +46,9 @@
 			if (e.key === 'ArrowLeft') { e.preventDefault(); scrollToSlide(index - 1); }
 			else if (e.key === 'ArrowRight') { e.preventDefault(); scrollToSlide(index + 1); }
 		});
+
+		viewport.addEventListener('pointerdown', function () { settled = true; }, { once: true });
+		viewport.addEventListener('wheel', function () { settled = true; }, { once: true, passive: true });
 
 		var raf;
 		viewport.addEventListener('scroll', function () {
@@ -57,15 +63,13 @@
 			viewport.scrollLeft = index * viewport.clientWidth;
 		});
 
-		// Keep it pinned to the first slide while media (images, YouTube iframe)
-		// loads in and nudges the scroll position.
-		var settled = false;
+		// Media (images, YouTube/Drive iframes, video) can nudge the scroll
+		// position as it loads; hold at slide 1 until it settles or the viewer acts.
 		function pinToStart() {
 			if (settled) return;
 			viewport.scrollLeft = 0;
 			setActive(0);
 		}
-		viewport.addEventListener('pointerdown', function () { settled = true; }, { once: true });
 		pinToStart();
 		requestAnimationFrame(pinToStart);
 		window.addEventListener('load', pinToStart);
@@ -75,6 +79,6 @@
 		carousel.querySelectorAll('video').forEach(function (el) {
 			el.addEventListener('loadedmetadata', pinToStart);
 		});
-		setTimeout(pinToStart, 500);
+		setTimeout(function () { settled = true; }, 1500);
 	});
 })();
