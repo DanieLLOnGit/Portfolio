@@ -653,7 +653,7 @@ main > section > h2,
 .carousel--gallery .carousel-slide {
 	flex: 0 0 auto;
 	width: auto;
-	height: clamp(19rem, 46vw, 32rem);
+	height: clamp(21rem, 52vw, 38rem);
 	scroll-snap-align: start;
 }
 .carousel--gallery .carousel-slide img,
@@ -671,7 +671,7 @@ main > section > h2,
 .carousel--gallery .carousel-prev { left: max(1rem, calc(50vw - 50rem)); }
 .carousel--gallery .carousel-next { right: max(1rem, calc(50vw - 50rem)); }
 @media (max-width: 40rem) {
-	.carousel--gallery .carousel-slide { height: 62vw; }
+	.carousel--gallery .carousel-slide { height: 70vw; }
 }
 .carousel-arrow {
 	position: absolute;
