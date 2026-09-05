@@ -23,16 +23,23 @@
 			return dot;
 		});
 
-		// Distance from one slide's left edge to the next, gap included. When more
-		// than one slide is visible at once this is smaller than the viewport.
-		// offsetWidth is used so a reveal transform can't distort the measurement.
-		function step() {
-			var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-			return slides[0].offsetWidth + gap || viewport.clientWidth;
+		// Scroll offset that lines slide i up with the left edge of the strip.
+		// Works whether every slide is the same width or each one differs.
+		function offsetOf(i) {
+			return slides[i].offsetLeft - slides[0].offsetLeft;
 		}
 
 		function maxLeft() {
 			return Math.max(0, track.scrollWidth - viewport.clientWidth);
+		}
+
+		function nearestIndex() {
+			var x = viewport.scrollLeft, best = 0, bestD = Infinity;
+			for (var i = 0; i < slides.length; i++) {
+				var d = Math.abs(offsetOf(i) - x);
+				if (d < bestD) { bestD = d; best = i; }
+			}
+			return best;
 		}
 
 		function paint() {
@@ -50,7 +57,7 @@
 		function goTo(i, scroll) {
 			index = Math.max(0, Math.min(slides.length - 1, i));
 			if (scroll) {
-				var left = Math.min(index * step(), maxLeft());
+				var left = Math.min(offsetOf(index), maxLeft());
 				try { viewport.scrollTo({ left: left, behavior: 'smooth' }); }
 				catch (e) { viewport.scrollLeft = left; }
 			}
@@ -71,10 +78,7 @@
 			if (raf) return;
 			raf = requestAnimationFrame(function () {
 				raf = null;
-				var s = step();
-				if (!s) return;
-				var i = Math.round(viewport.scrollLeft / s);
-				if (i !== index) { index = Math.max(0, Math.min(slides.length - 1, i)); }
+				index = nearestIndex();
 				paint();
 			});
 		}, { passive: true });
@@ -82,7 +86,7 @@
 		// Media (video, images, embeds) loading in can shift the layout;
 		// re-assert the current slide a few times early on.
 		function reassert() {
-			viewport.scrollLeft = Math.min(index * step(), maxLeft());
+			viewport.scrollLeft = Math.min(offsetOf(index), maxLeft());
 			paint();
 		}
 		window.addEventListener('resize', reassert);
@@ -91,6 +95,9 @@
 		window.addEventListener('load', reassert);
 		carousel.querySelectorAll('img').forEach(function (el) {
 			if (!el.complete) el.addEventListener('load', reassert, { once: true });
+		});
+		carousel.querySelectorAll('video').forEach(function (el) {
+			el.addEventListener('loadedmetadata', reassert, { once: true });
 		});
 	});
 })();

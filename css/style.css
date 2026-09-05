@@ -647,25 +647,31 @@ main > section > h2,
 	scroll-padding-left: max(var(--gutter), calc(50vw - 50rem));
 }
 .carousel--gallery .carousel-track {
-	gap: clamp(1rem, 2.5vw, 2.4rem);
+	gap: clamp(.5rem, 1.2vw, 1rem);
 	padding-inline: max(var(--gutter), calc(50vw - 50rem));
 }
 .carousel--gallery .carousel-slide {
 	flex: 0 0 auto;
-	width: clamp(28rem, 62vw, 52rem);
+	width: auto;
+	height: clamp(19rem, 46vw, 32rem);
 	scroll-snap-align: start;
 }
 .carousel--gallery .carousel-slide img,
 .carousel--gallery .carousel-slide video,
 .carousel--gallery .carousel-slide iframe {
-	aspect-ratio: 3 / 2;
+	width: auto;
+	height: 100%;
+	max-width: 90vw;
+	aspect-ratio: auto;
 	object-fit: contain;
 	background: transparent;
 }
+.carousel--gallery .carousel-slide video,
+.carousel--gallery .carousel-slide iframe { aspect-ratio: 16 / 9; }
 .carousel--gallery .carousel-prev { left: max(1rem, calc(50vw - 50rem)); }
 .carousel--gallery .carousel-next { right: max(1rem, calc(50vw - 50rem)); }
 @media (max-width: 40rem) {
-	.carousel--gallery .carousel-slide { width: 86vw; }
+	.carousel--gallery .carousel-slide { height: 62vw; }
 }
 .carousel-arrow {
 	position: absolute;
