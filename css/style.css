@@ -83,6 +83,13 @@ h3 { font-size: clamp(2.6rem, 4vw, 3.4rem); margin-bottom: .3em; }
 p { margin-bottom: 1.2em; }
 p:last-child { margin-bottom: 0; }
 
+code {
+	font-family: 'Menlo', ui-monospace, monospace;
+	font-size: .88em;
+	background: var(--gray-bg);
+	padding: .1em .4em;
+}
+
 .lead { font-size: clamp(2.1rem, 3vw, 2.6rem); line-height: 1.5; }
 
 .eyebrow {

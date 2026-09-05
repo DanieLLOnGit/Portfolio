@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Capacitive Proximity Gripper - Daniel Ye</title>
+	<meta name="description" content="A closed-loop robotic gripper that uses capacitive proximity sensing to detect and grasp objects before contact, self-centering with two independently driven jaws. Research at Columbia's CLUE lab.">
+	<link rel="preload" as="font" type="font/woff2" href="../fonts/teko-700.woff2" crossorigin>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-home="../index.html">
+
+	<header class="site-header-outer">
+	<div class="wrap site-header">
+		<div class="site-left">
+			<a class="site-title" href="../index.html">Home</a>
+			<nav class="site-nav">
+				<a href="../index.html#about">About</a>
+				<a href="../index.html#projects">Projects</a>
+				<a href="../index.html#skills">Skills</a>
+				<a href="../index.html#experience">Experience</a>
+				<a href="../index.html#contact">Contact</a>
+			</nav>
+		</div>
+		<div class="site-actions">
+			<button id="search-trigger" type="button" class="search-trigger" aria-haspopup="dialog">Search</button>
+			<a class="icon-link" href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z"/>
+				</svg>
+			</a>
+			<a class="icon-link" href="../resume.pdf" download="Daniel-Ye-Resume.pdf" aria-label="Download Resume" data-tip="Download Resume">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M13.5 3.5a1.5 1.5 0 0 0-3 0v8.38L8.06 9.44a1.5 1.5 0 1 0-2.12 2.12l5 5a1.5 1.5 0 0 0 2.12 0l5-5a1.5 1.5 0 1 0-2.12-2.12l-2.44 2.44Z"/>
+					<path d="M4 14.5A1.5 1.5 0 0 1 5.5 16v3h13v-3a1.5 1.5 0 0 1 3 0v4A1.5 1.5 0 0 1 20 21.5H4A1.5 1.5 0 0 1 2.5 20v-4A1.5 1.5 0 0 1 4 14.5Z"/>
+				</svg>
+			</a>
+		</div>
+	</div>
+	</header>
+
+	<main id="top" class="project">
+		<header class="wrap wrap--narrow project-header">
+			<p class="eyebrow">Project</p>
+			<h1>Capacitive Proximity Gripper</h1>
+			<p class="lead">A closed-loop robotic gripper that senses objects in the air and grasps them before contact, self-centering with two independently driven jaws. Research at the Columbia Laboratory for Unconventional Electronics.</p>
+			<p class="project-links">
+				<a href="../capacitive-gripper-presentation.pdf" target="_blank" rel="noreferrer">View the presentation &rarr;</a>
+			</p>
+		</header>
+
+		<div class="wrap project-body">
+			<div class="carousel carousel--square" id="gripper-carousel">
+				<div class="carousel-frame">
+					<div class="carousel-viewport">
+						<div class="carousel-track">
+							<figure class="carousel-slide">
+								<img src="../img/gripper.jpeg" alt="The gripper: two white 3D-printed jaws on Dynamixel servos, mounted on a rotating base" width="1200" height="1125">
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/gripper-breadboard.jpeg" alt="The PSoC on a QFN breakout board wired up on a breadboard for bring-up" width="1111" height="1200">
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/gripper-scan.jpeg" alt="UART session log: raw vs baseline, the RawDiff proximity signal, and the detection state as a hand approaches" width="1600" height="939">
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/gripper-schematic.jpeg" alt="KiCad schematic of the PSoC sensor board with the antenna input and Cmod / decoupling network" width="1600" height="1102">
+							</figure>
+						</div>
+					</div>
+					<button type="button" class="carousel-arrow carousel-prev" aria-label="Previous slide">&lsaquo;</button>
+					<button type="button" class="carousel-arrow carousel-next" aria-label="Next slide">&rsaquo;</button>
+				</div>
+				<div class="carousel-dots" aria-label="Choose slide"></div>
+			</div>
+
+			<div class="project-cols">
+				<div class="project-col">
+					<h2>Overview</h2>
+					<p>Robot perception leans on vision and touch, which leaves a blind spot in the moment a hand is closing on an object. This project adds capacitive proximity sensing to fill that gap: the gripper detects an approaching object before any contact and closes each jaw in proportion to how near the object is.</p>
+					<p>Each jaw carries an exposed copper antenna wired to a Cypress PSoC running two independent CSDv2 proximity channels. The firmware streams a per-jaw proximity signal over UART; a Python controller maps it to Dynamixel motor velocity, fast when the object is far and easing to a smooth stop near contact. Because each jaw follows only its own sensor, the gripper self-centers around objects placed off to one side, with no explicit position commands. The mechanism builds on the open-source LEGATO gripper.</p>
+
+					<h2>Tech Stack</h2>
+					<ul class="tech-tags">
+						<li>C</li>
+						<li>Python</li>
+						<li>PSoC / ModusToolbox</li>
+						<li>CSDv2 CapSense</li>
+						<li>Dynamixel SDK</li>
+						<li>RS-485</li>
+						<li>UART</li>
+						<li>KiCad</li>
+						<li>pyserial</li>
+						<li>ARM Cortex-M0+</li>
+					</ul>
+				</div>
+				<div class="project-col">
+					<h2>Key Features</h2>
+					<ul>
+						<li>Two independent CSDv2 capacitive proximity widgets, one per jaw, each reading an exposed copper antenna at the jaw tip. Detection is the difference between the raw count and a locked baseline, rising as an object approaches, no contact required.</li>
+						<li>Per-jaw velocity follows a quadratic curve, vel = VEL_MAX &times; (1 &minus; ratio)&sup2; + VEL_MIN, so the jaws move quickly while the object is far and decelerate smoothly as they close in.</li>
+						<li>On boot the firmware waits three seconds, samples 20 scans of true-idle data, then locks the baseline, so a hand near the sensor at power-on can&rsquo;t corrupt the reference.</li>
+						<li>Software PWM dims the two LED proximity indicators inside the CapSense hardware busy-wait window, so no extra timer peripheral is needed. UART streams the proximity data in a compact <code>P:&lt;d1&gt;,&lt;d2&gt;</code> format at about 15 Hz for the Python layer.</li>
+						<li>A grip-and-release state machine (detect &rarr; hold 3 s &rarr; open &rarr; cooldown) uses a hold timer that ignores momentary sensor dropouts. A second controller keeps a target proximity on both jaws with proportional control, reopening and re-acquiring automatically when the object is lost.</li>
+						<li>IDAC saturation once pinned the raw count at the 12-bit ceiling and blinded the sensor. Root cause: the modulator current was set too low, overdriving the CSD integrator mid-scan. Fixed by restoring IDAC_MOD0 and the sensing clock and raising the conversion count (100 &rarr; 300) to recover SNR instead.</li>
+						<li>Custom 2-layer PSoC sensor board in KiCad (~40 &times; 30 mm): antenna traces routed as wide copper fills at the jaw tips with a ground keepout underneath, the 2.2 nF Cmod cap placed right at the pin, internal-LDO VCCD decoupled separately, and a 1.27 mm SWD header for the MiniProg4.</li>
+					</ul>
+				</div>
+			</div>
+
+			<p class="project-back"><a href="../index.html#projects">&larr; All projects</a></p>
+		</div>
+	</main>
+
+	<footer class="site-footer">
+		<div class="wrap">
+			<span>&copy; 2026 Daniel Ye</span>
+			<span class="footer-links">
+				<a href="https://www.linkedin.com/in/danielyye/" target="_blank" rel="noreferrer">LinkedIn</a>
+			</span>
+		</div>
+	</footer>
+
+	<div id="search-overlay" class="search-overlay" hidden>
+		<div class="search-modal" role="dialog" aria-modal="true" aria-label="Search">
+			<input id="search-input" type="text" placeholder="Jump to a section&hellip;" autocomplete="off">
+			<ul id="search-results" class="search-results"></ul>
+		</div>
+	</div>
+
+	<script>
+		(function () {
+			var header = document.querySelector('.site-header');
+			var outer = document.querySelector('.site-header-outer');
+			function setHeaderHeight() {
+				document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+			}
+			function onScroll() {
+				outer.classList.toggle('is-stuck', window.scrollY > 4);
+			}
+			setHeaderHeight();
+			onScroll();
+			window.addEventListener('resize', setHeaderHeight);
+			window.addEventListener('scroll', onScroll, { passive: true });
+		})();
+	</script>
+	<script src="../js/search.js"></script>
+	<script src="../js/reveal.js"></script>
+	<script src="../js/carousel.js"></script>
+</body>
+</html>
