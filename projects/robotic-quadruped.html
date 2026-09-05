@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Robotic Quadruped - Daniel Ye</title>
-	<meta name="description" content="A four-legged walking robot. I designed and built its power distribution board: one battery input, per-leg fusing, a regulated bus, and four diode-protected leg outputs.">
+	<meta name="description" content="A four-legged walking robot. I helped design its power distribution board: one battery input, per-leg fusing, a regulated bus, and four diode-protected leg outputs.">
 	<link rel="preload" as="font" type="font/woff2" href="../fonts/teko-700.woff2" crossorigin>
 	<link rel="stylesheet" href="../css/style.css?v=6">
 </head>
@@ -43,7 +43,7 @@
 		<header class="wrap wrap--narrow project-header">
 			<p class="eyebrow">Project</p>
 			<h1>Robotic Quadruped</h1>
-			<p class="lead">A four-legged walking robot built with the robotics team. My part was the power distribution board: the board every other subsystem plugs into for power, with one battery input, a fuse on every leg, a regulated bus, and four protected leg outputs.</p>
+			<p class="lead">A four-legged walking robot built with the robotics team. My part was assisting in the design of the power distribution board: the board every other subsystem plugs into for power, with one battery input, a fuse on every leg, a regulated bus, and four protected leg outputs.</p>
 		</header>
 
 		<div class="wrap project-body">
@@ -58,7 +58,7 @@
 								<img src="../img/quadruped-pdb.jpeg" alt="The power distribution board, revision 2: four blade-fuse holders around the edge, four LM73100 ideal-diode modules down the middle, and XT90 leads" width="1125" height="1500">
 							</figure>
 							<figure class="carousel-slide">
-								<img src="../img/quadruped-pdb-layout.png" alt="KiCad PCB layout of the power distribution board: the XT90 input pad, four fuse footprints, the buck-converter footprint, and the four leg outputs" width="1049" height="705">
+								<img src="../img/quadruped-pdb-layout.png" alt="Altium PCB layout of the power distribution board: the XT90 input pad, four fuse footprints, the buck-converter footprint, and the four leg outputs" width="1049" height="705">
 							</figure>
 							<figure class="carousel-slide">
 								<img src="../img/quadruped-pdb-installed.jpeg" alt="The board mounted inside the robot's aluminium frame, wired to the battery and out to the legs" width="1125" height="1500">
@@ -74,13 +74,13 @@
 			<div class="project-cols">
 				<div class="project-col">
 					<h2>Overview</h2>
-					<p>The quadruped is a team project; my work on it was the power distribution board (PDB), and that is all this page covers.</p>
+					<p>The quadruped is a team project; I helped design the power distribution board (PDB), and that is what this page covers.</p>
 					<p>The robot runs on a single battery pack that has to feed a drive motor in every leg alongside the compute and sensors. The PDB sits between the pack and everything else: one high-current input, protection and regulation in the middle, and four leg outputs, so every other board just plugs in and gets clean power.</p>
 					<p>Raw pack voltage comes in through an XT90 connector, each of the four leg branches gets its own fuse, the bus runs through a buck converter that drops it to the level the leg motors are rated for, and every leg passes through an ideal-diode IC so current can only flow out to the leg and never back into the bus. This is the second revision of the board.</p>
 
 					<h2>Tech Stack</h2>
 					<ul class="tech-tags">
-						<li>KiCad</li>
+						<li>Altium</li>
 						<li>Power Distribution</li>
 						<li>Buck Converter</li>
 						<li>XT90</li>
@@ -97,7 +97,7 @@
 						<li>Four output connectors, one wired to each leg of the quadruped, each carrying its own fused and diode-protected copy of the bus.</li>
 						<li>U1 is a buck converter that steps the pack voltage down to the level the RobStride leg motors are rated to accept, so the actuators see a regulated supply instead of raw battery voltage that sags and spikes under load.</li>
 						<li>Four ideal-diode ICs (LM73100) down the middle, one per leg output. They act as near-lossless one-way valves, so a leg braking or back-driving can&rsquo;t push current back into the bus or into the other three legs, and they block reverse polarity if the battery is ever connected backwards.</li>
-						<li>Laid out in KiCad with wide copper pours and short high-current paths running from the input, through the fuses and the regulator, out to the leg connectors.</li>
+						<li>Laid out in Altium with wide copper pours and short high-current paths running from the input, through the fuses and the regulator, out to the leg connectors.</li>
 					</ul>
 				</div>
 			</div>
