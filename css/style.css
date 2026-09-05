@@ -653,7 +653,7 @@ main > section > h2,
 .carousel--gallery .carousel-slide {
 	flex: 0 0 auto;
 	width: auto;
-	height: clamp(21rem, 52vw, 38rem);
+	height: clamp(24rem, 60vw, 44rem);
 	scroll-snap-align: start;
 }
 .carousel--gallery .carousel-slide img,
@@ -666,12 +666,13 @@ main > section > h2,
 	object-fit: contain;
 	background: transparent;
 }
-.carousel--gallery .carousel-slide video,
+/* iframes have no intrinsic size; a <video> keeps its own aspect ratio
+   (aspect-ratio:auto above) once the file's dimensions load */
 .carousel--gallery .carousel-slide iframe { aspect-ratio: 16 / 9; }
 .carousel--gallery .carousel-prev { left: max(1rem, calc(50vw - 50rem)); }
 .carousel--gallery .carousel-next { right: max(1rem, calc(50vw - 50rem)); }
 @media (max-width: 40rem) {
-	.carousel--gallery .carousel-slide { height: 70vw; }
+	.carousel--gallery .carousel-slide { height: 80vw; }
 }
 .carousel-arrow {
 	position: absolute;
