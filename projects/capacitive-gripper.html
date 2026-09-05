@@ -46,6 +46,7 @@
 			<p class="lead">A closed-loop robotic gripper that senses objects in the air and grasps them before contact, self-centering with two independently driven jaws. Research at the Columbia Laboratory for Unconventional Electronics.</p>
 			<p class="project-links">
 				<a href="../capacitive-gripper-presentation.pdf" target="_blank" rel="noreferrer">View the presentation &rarr;</a>
+				<a href="https://ut-hcrl.github.io/LEGATO-Gripper/" target="_blank" rel="noreferrer">LEGATO gripper (open source) &rarr;</a>
 			</p>
 		</header>
 
@@ -81,14 +82,18 @@
 				<div class="project-col">
 					<h2>Overview</h2>
 					<p>Robot perception leans on vision and touch, which leaves a blind spot in the moment a hand is closing on an object. This project adds capacitive proximity sensing to fill that gap: the gripper detects an approaching object before any contact and closes each jaw in proportion to how near the object is.</p>
-					<p>Each jaw carries an exposed copper antenna wired to a Cypress PSoC running two independent CSDv2 proximity channels. The firmware streams a per-jaw proximity signal over UART; a Python controller maps it to Dynamixel motor velocity, fast when the object is far and easing to a smooth stop near contact. Because each jaw follows only its own sensor, the gripper self-centers around objects placed off to one side, with no explicit position commands. The mechanism builds on the open-source LEGATO gripper.</p>
+					<p>Each jaw carries an exposed copper antenna wired to a Cypress PSoC running two independent capacitive proximity channels. The firmware streams a per-jaw proximity signal over UART; a Python controller maps it to Dynamixel motor velocity, fast when the object is far and easing to a smooth stop near contact. Because each jaw follows only its own sensor, the gripper self-centers around objects placed off to one side, with no explicit position commands. The mechanism builds on the open-source <a href="https://ut-hcrl.github.io/LEGATO-Gripper/" target="_blank" rel="noreferrer">LEGATO gripper</a>.</p>
+
+					<h2>Abstract</h2>
+					<p>Autonomous robotic hands often rely on cameras for long-range vision and on tactile sensors for physical contact. However, when a hand gets incredibly close to an object without touching the object, it blocks the camera view and creates a blind spot in robotic sensory data. This challenge is especially critical for projects like the dexterous robotic hand being developed by Columbia University&rsquo;s CLUE and ROAM labs, which relies on advanced touch sensing without cameras. To bridge the gap between vision and touch, capacitive proximity sensors can be implemented to provide continuous pre-contact awareness for safe, reactive object engagement. This work presents the design and fabrication of a parallel gripper featuring capacitive proximity sensors to validate the necessity of these sensors in Columbia&rsquo;s dexterous robotic hand.</p>
+					<p>The system uses an embedded Cypress microcontroller with built-in capacitive sensors to detect capacitive changes as a conductive object approaches. Fine tuning was applied for both metallic conductors, like metals, and ionic conductors, like human hands. Using a custom Python control script, the system translates these proximity measurements in real time to adjust the gripper&rsquo;s motors. This enables the fingers to close rapidly from a distance and automatically slow down as they near the target, preventing harsh collisions and ensuring a soft grasp. To move beyond breadboard experiments, a PCB was designed to make the electronics compact and reliable. Continued experimentation hopes to provide a practical framework to enhance object manipulation and reactive control in robotic hands, specifically Columbia&rsquo;s dexterous robotic hand.</p>
 
 					<h2>Tech Stack</h2>
 					<ul class="tech-tags">
 						<li>C</li>
 						<li>Python</li>
 						<li>PSoC / ModusToolbox</li>
-						<li>CSDv2 CapSense</li>
+						<li>Capacitive Sensing</li>
 						<li>Dynamixel SDK</li>
 						<li>RS-485</li>
 						<li>UART</li>
