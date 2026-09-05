@@ -109,7 +109,7 @@
 						<li>Modified an open-source parallel-jaw gripper by CADding wire channels for the sensors, finger-shaped claws, and a base for the gripper. The base holds a power hub for the Dynamixel servos and a mount for the electronics.</li>
 						<li>The power hub distributes 12&nbsp;V to the two Dynamixel servos, and a U2D2 converter establishes communication from the laptop to the servos. The proximity sensors on the microcontroller are programmed with a MiniProg4 and also connect to the laptop.</li>
 						<li>A single Python loop uses the Dynamixel SDK and pySerial to read the proximity data over UART from the PSoC and drive the motors at the same time. There are two control modes: a grip-and-release cycle (detect an object &rarr; close &rarr; hold 3 s &rarr; open &rarr; pause) and a follow mode that holds a set distance from a moving hand using proportional control. Jaw speed follows a quadratic curve, quick while the object is far away and easing to a gentle stop as it gets close.</li>
-						<li>A custom PCB was created in KiCad to fold the breadboard wiring down onto one compact board.</li>
+						<li>A custom PCB was created in KiCad to fold the breadboard wiring down onto one compact board, manufactured by JLCPCB.</li>
 					</ul>
 				</div>
 			</div>
