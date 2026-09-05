@@ -6,7 +6,7 @@
 	<title>Daniel Ye</title>
 	<meta name="description" content="Daniel Ye - Electrical Engineering, Columbia University.">
 	<link rel="preload" as="font" type="font/woff2" href="fonts/teko-700.woff2" crossorigin>
-	<link rel="stylesheet" href="css/style.css?v=6">
+	<link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 
@@ -197,7 +197,11 @@
 			<div class="wrap contact-inner">
 				<div class="contact-card">
 					<h2>Contact</h2>
-					<form class="contact-form" method="post" enctype="text/plain" action="mailto:dy2514@columbia.edu">
+					<form class="contact-form" method="post" action="https://api.web3forms.com/submit">
+						<input type="hidden" name="access_key" value="5f24f6c4-40c9-4f68-b895-07724a0d71ce">
+						<input type="hidden" name="subject" value="New message from your portfolio">
+						<input type="hidden" name="from_name" value="Daniel Ye Portfolio">
+						<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 						<label>
 							<span>Name</span>
 							<input type="text" name="name" required>
@@ -211,6 +215,7 @@
 							<textarea name="message" rows="5" required></textarea>
 						</label>
 						<button type="submit" class="btn">Send message</button>
+						<p class="form-status" role="status" aria-live="polite" hidden></p>
 					</form>
 				</div>
 
@@ -268,19 +273,44 @@
 			window.addEventListener('scroll', onScroll, { passive: true });
 		})();
 
-		// Contact form opens the visitor's mail client, pre-addressed to dy2514@columbia.edu
+		// Contact form: submit to Web3Forms over fetch, show the result inline
 		(function () {
 			var form = document.querySelector('.contact-form');
 			if (!form) return;
+			var status = form.querySelector('.form-status');
+			var button = form.querySelector('button[type="submit"]');
+
+			function setStatus(text, state) {
+				status.textContent = text;
+				status.dataset.state = state;
+				status.hidden = false;
+			}
+
 			form.addEventListener('submit', function (e) {
 				e.preventDefault();
-				var name = (form.elements.name.value || '').trim();
-				var email = (form.elements.email.value || '').trim();
-				var message = (form.elements.message.value || '').trim();
-				var subject = name ? 'Portfolio message from ' + name : 'Portfolio message';
-				var body = message + '\n\n- ' + (name || 'a visitor') + (email ? ' (' + email + ')' : '');
-				window.location.href = 'mailto:dy2514@columbia.edu?subject='
-					+ encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+				if (!form.reportValidity()) return;
+				button.disabled = true;
+				setStatus('Sending…', 'pending');
+
+				var payload = JSON.stringify(Object.fromEntries(new FormData(form)));
+				fetch('https://api.web3forms.com/submit', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+					body: payload
+				})
+					.then(function (r) { return r.json(); })
+					.then(function (data) {
+						if (data.success) {
+							form.reset();
+							setStatus('Thanks - your message has been sent.', 'ok');
+						} else {
+							setStatus(data.message || 'Something went wrong. Please email me directly.', 'err');
+						}
+					})
+					.catch(function () {
+						setStatus('Network error. Please email me directly.', 'err');
+					})
+					.finally(function () { button.disabled = false; });
 			});
 		})();
 	</script>

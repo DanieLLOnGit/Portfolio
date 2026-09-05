@@ -522,6 +522,13 @@ main > section > h2,
 }
 .btn:hover,
 .btn:focus { background: var(--accent); }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn:disabled:hover { background: var(--black); }
+
+.form-status { margin: 0; font-size: 1.6rem; }
+.form-status[data-state="ok"] { color: var(--black); font-weight: 700; }
+.form-status[data-state="err"] { color: var(--accent); font-weight: 700; }
+.form-status[data-state="pending"] { color: var(--gray); }
 
 .info-grid {
 	display: grid;
