@@ -619,6 +619,16 @@ main > section > h2,
 	aspect-ratio: 3 / 4;
 	object-fit: contain;
 }
+
+/* Square box: for a set of mixed-orientation media (video, portrait photo,
+   landscape diagram); everything shows uncropped with modest letterboxing */
+.carousel--square { max-width: 44rem; margin-inline: auto; }
+.carousel--square .carousel-slide img,
+.carousel--square .carousel-slide video,
+.carousel--square .carousel-slide iframe {
+	aspect-ratio: 1 / 1;
+	object-fit: contain;
+}
 .carousel-arrow {
 	position: absolute;
 	top: 50%;

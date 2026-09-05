@@ -50,7 +50,29 @@
 		</header>
 
 		<div class="wrap project-body">
-			<img class="project-photo" src="../img/rps.jpeg" alt="The finished Rock Paper Scissors circuit across two breadboards, NAND-gate ICs and lit LEDs" width="750" height="1000">
+			<div class="carousel carousel--square" id="rps-carousel">
+				<div class="carousel-frame">
+					<div class="carousel-viewport">
+						<div class="carousel-track">
+							<figure class="carousel-slide">
+								<video src="../img/rps-demo.mp4" controls playsinline preload="metadata"></video>
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/rps.jpeg" alt="The finished Rock Paper Scissors circuit across two breadboards, NAND-gate ICs and lit LEDs" width="750" height="1000">
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/rps-logicly.jpeg" alt="The full two-player game simulated in Logicly, built entirely from NAND gates" width="1500" height="1080">
+							</figure>
+							<figure class="carousel-slide">
+								<img src="../img/rps-kmap.jpeg" alt="Truth table and Karnaugh map used to minimize the win-condition logic" width="994" height="1300">
+							</figure>
+						</div>
+					</div>
+					<button type="button" class="carousel-arrow carousel-prev" aria-label="Previous slide">&lsaquo;</button>
+					<button type="button" class="carousel-arrow carousel-next" aria-label="Next slide">&rsaquo;</button>
+				</div>
+				<div class="carousel-dots" aria-label="Choose slide"></div>
+			</div>
 
 			<div class="project-cols">
 				<div class="project-col">
@@ -70,10 +92,10 @@
 				<div class="project-col">
 					<h2>Key Features</h2>
 					<ul>
-						<li>Each player selects a move with three push buttons; a NAND latch holds the current move and lights an LED, and choosing a different move automatically clears the previous one.</li>
+						<li>Each player selects a move with three push buttons; a latch holds the current move and lights an LED, and choosing a different move automatically clears the previous one.</li>
 						<li>A judge button evaluates the round: one player picked wins by default; both picked is scored by rock beats scissors beats paper beats rock, with a draw lighting both win LEDs.</li>
-						<li>Every gate is a 74HC00 NAND, the only chip the lab carried, so the original NOR-based design had to be re-derived entirely in NAND.</li>
-						<li>The win-condition logic was minimized with Karnaugh maps, turning a sprawling first-draft circuit into a handful of gates per outcome.</li>
+						<li>The first design was drawn with NOR gates, each move-select block was a six-NOR-gate circuit. The lab only stocked 74HC00 NAND chips, so we re-derived every stage in NAND: converting the NOR logic with DeMorgan&rsquo;s laws, tying NAND gates as inverters wherever a NOT was needed, then duplicating the block for each move and each player.</li>
+						<li>The win-condition logic started as a sprawling circuit, so we built its truth table and used Karnaugh maps to minimize each output (for example W1 = R1&middot;P2&prime; + P1&middot;R2 + P1&middot;P2 + S1&middot;R2&prime;) before implementing the reduced expressions in NAND.</li>
 						<li>The full system was simulated in Logicly before any wiring, then assembled across two breadboards with roughly ten ICs.</li>
 					</ul>
 				</div>
@@ -117,5 +139,6 @@
 	</script>
 	<script src="../js/search.js"></script>
 	<script src="../js/reveal.js"></script>
+	<script src="../js/carousel.js"></script>
 </body>
 </html>

@@ -12,20 +12,17 @@
 		}
 
 		var index = 0;
-		// Once the viewer interacts, stop auto-pinning to the first slide.
-		var settled = false;
 
 		var dots = slides.map(function (_, i) {
 			var dot = document.createElement('button');
 			dot.type = 'button';
 			dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-			dot.addEventListener('click', function () { scrollToSlide(i); });
+			dot.addEventListener('click', function () { goTo(i, true); });
 			dotsWrap.appendChild(dot);
 			return dot;
 		});
 
-		function setActive(i) {
-			index = Math.max(0, Math.min(slides.length - 1, i));
+		function paint() {
 			dots.forEach(function (dot, d) {
 				dot.setAttribute('aria-selected', d === index ? 'true' : 'false');
 			});
@@ -33,52 +30,53 @@
 			if (next) next.disabled = index === slides.length - 1;
 		}
 
-		function scrollToSlide(i) {
-			settled = true;
-			var target = Math.max(0, Math.min(slides.length - 1, i));
-			viewport.scrollTo({ left: target * viewport.clientWidth, behavior: 'smooth' });
+		// Move to a slide. `scroll` = drive the scroll position; otherwise we're
+		// just syncing state to a scroll the viewer already made.
+		function goTo(i, scroll) {
+			index = Math.max(0, Math.min(slides.length - 1, i));
+			paint();
+			if (scroll) {
+				var left = index * viewport.clientWidth;
+				try { viewport.scrollTo({ left: left, behavior: 'smooth' }); }
+				catch (e) { viewport.scrollLeft = left; }
+			}
 		}
 
-		if (prev) prev.addEventListener('click', function () { scrollToSlide(index - 1); });
-		if (next) next.addEventListener('click', function () { scrollToSlide(index + 1); });
+		if (prev) prev.addEventListener('click', function () { goTo(index - 1, true); });
+		if (next) next.addEventListener('click', function () { goTo(index + 1, true); });
 
 		carousel.addEventListener('keydown', function (e) {
-			if (e.key === 'ArrowLeft') { e.preventDefault(); scrollToSlide(index - 1); }
-			else if (e.key === 'ArrowRight') { e.preventDefault(); scrollToSlide(index + 1); }
+			if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1, true); }
+			else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1, true); }
 		});
 
-		viewport.addEventListener('pointerdown', function () { settled = true; }, { once: true });
-		viewport.addEventListener('wheel', function () { settled = true; }, { once: true, passive: true });
-
+		// Sync the dots when the viewer scrolls/swipes the strip themselves.
 		var raf;
 		viewport.addEventListener('scroll', function () {
 			if (raf) return;
 			raf = requestAnimationFrame(function () {
 				raf = null;
-				setActive(Math.round(viewport.scrollLeft / viewport.clientWidth));
+				var w = viewport.clientWidth;
+				if (!w) return;
+				var i = Math.round(viewport.scrollLeft / w);
+				if (i !== index) { index = i; paint(); }
 			});
 		}, { passive: true });
 
 		window.addEventListener('resize', function () {
-			viewport.scrollLeft = index * viewport.clientWidth;
+			if (viewport.clientWidth) viewport.scrollLeft = index * viewport.clientWidth;
 		});
 
-		// Media (images, YouTube/Drive iframes, video) can nudge the scroll
-		// position as it loads; hold at slide 1 until it settles or the viewer acts.
-		function pinToStart() {
-			if (settled) return;
-			viewport.scrollLeft = 0;
-			setActive(0);
+		// Media (video, images, embeds) loading in can shift the scroll position;
+		// re-assert the current slide a few times early on.
+		function reassert() {
+			if (viewport.clientWidth) viewport.scrollLeft = index * viewport.clientWidth;
 		}
-		pinToStart();
-		requestAnimationFrame(pinToStart);
-		window.addEventListener('load', pinToStart);
-		carousel.querySelectorAll('img, iframe').forEach(function (el) {
-			el.addEventListener('load', pinToStart);
+		reassert();
+		requestAnimationFrame(reassert);
+		window.addEventListener('load', reassert);
+		carousel.querySelectorAll('img').forEach(function (el) {
+			if (!el.complete) el.addEventListener('load', reassert, { once: true });
 		});
-		carousel.querySelectorAll('video').forEach(function (el) {
-			el.addEventListener('loadedmetadata', pinToStart);
-		});
-		setTimeout(function () { settled = true; }, 1500);
 	});
 })();
