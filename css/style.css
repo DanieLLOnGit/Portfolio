@@ -280,6 +280,8 @@ main > section > h2,
 	padding-top: 1.4rem;
 	margin-bottom: clamp(3rem, 6vw, 5.5rem);
 }
+/* Force everything after this card into the next column */
+.card--colbreak { break-after: column; }
 .card-media {
 	display: block;
 	width: 100%;
