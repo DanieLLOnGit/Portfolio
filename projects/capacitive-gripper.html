@@ -100,15 +100,14 @@
 				<div class="project-col">
 					<h2>Key Features</h2>
 					<ul>
-						<li>The first prototype ran on a smaller PSoC, programmed in C with Cypress&rsquo;s development tools. It had only one hardware timing block, so it could support a single proximity sensor, and its processor wasn&rsquo;t fast enough to keep up with software UART, which made talking to a computer unreliable.</li>
-						<li>Moved to a more capable PSoC 4000, which has several timing blocks, so one sensor can sit on each finger. Soldered the chip onto a breakout board and built a breadboard version of the full gripper to develop against.</li>
-						<li>The sensors kept pegging at their maximum reading and going blind. Raising the sensor drive current (IDAC) keeps the internal integrator in its usable range, so the raw reading actually tracks how close an object is instead of just railing.</li>
-						<li>Conductive objects vary a lot, from a bare hand to solid metal, and they load the sensor very differently. A routine watches for the reading maxing out, a sign the object is highly conductive like metal, and lowers the sensitivity on the fly so the sensor keeps working across that whole range.</li>
-						<li>Adapted an open-source parallel-jaw gripper and modelled the parts around it: a base for the gripper, a power hub for the Dynamixel servos, and a mount for the breadboard and chip.</li>
-						<li>A Python program using the Dynamixel SDK and pySerial reads the proximity data over UART from the PSoC and sends motor commands at the same time, all in one loop.</li>
+						<li>Runs on a PSoC 4000 with a capacitive proximity sensor on each finger, each reading an exposed copper antenna at the fingertip. An approaching object is picked up from the shift in the sensor reading, with no contact needed.</li>
+						<li>The sensor drive current (IDAC) is set to keep the internal integrator in its usable range, so the raw reading varies meaningfully with how close an object is instead of pegging at its maximum.</li>
+						<li>Conductive objects load the sensor very differently, from a bare hand to solid metal. A routine watches for the reading maxing out, a sign of a highly conductive metallic object, and lowers the sensitivity on the fly so the sensor keeps working across that whole range.</li>
+						<li>Adapted from an open-source parallel-jaw gripper, with CAD for the parts around it: a base for the gripper, a power hub for the Dynamixel servos, and a mount for the electronics.</li>
+						<li>A single Python loop uses the Dynamixel SDK and pySerial to read the proximity data over UART from the PSoC and drive the motors at the same time.</li>
 						<li>Two control modes: a grip-and-release cycle (detect an object &rarr; close &rarr; hold 3 s &rarr; open &rarr; pause) and a follow mode that holds a set distance from a moving hand using proportional control.</li>
 						<li>Jaw speed follows a quadratic curve, quick while the object is far away and easing to a gentle stop as it gets close.</li>
-						<li>Designed a PCB to replace the breadboard wiring with one compact board. The boards have been fabricated and delivered, and components are being soldered on now.</li>
+						<li>A custom PCB folds the breadboard wiring down onto one compact board.</li>
 					</ul>
 				</div>
 			</div>
