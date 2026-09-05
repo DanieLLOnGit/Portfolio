@@ -55,7 +55,7 @@
 								<video src="../img/rps-demo.mp4" controls playsinline preload="metadata"></video>
 							</figure>
 							<figure class="carousel-slide">
-								<img src="../img/rps.jpeg" alt="The finished Rock Paper Scissors circuit across two breadboards, NAND-gate ICs and lit LEDs" width="750" height="1000">
+								<img src="../img/rps.jpeg" alt="The finished Rock Paper Scissors circuit across three breadboards, NAND-gate ICs and lit LEDs" width="750" height="1000">
 							</figure>
 							<figure class="carousel-slide">
 								<img src="../img/rps-logicly.jpeg" alt="The full two-player game simulated in Logicly, built entirely from NAND gates" width="1500" height="1080">
@@ -75,7 +75,7 @@
 				<div class="project-col">
 					<h2>Overview</h2>
 					<p>For our Intro to EE final project, a lab partner and I built a two-player Rock Paper Scissors game out of nothing but logic gates. Each player has three buttons, one per move, with an LED showing their current pick; pressing a different move automatically de-selects the old one. A judge button then scores the round: if only one player has picked, they win by default; if both have, standard rules decide it, and a draw lights both win LEDs.</p>
-					<p>The lab only stocked NAND gates (74HC00 ICs), so every part of the design, the latching move-select, the mutual exclusion, and the win detection, had to be rebuilt from NAND alone. We prototyped the whole thing in Logicly first and used Karnaugh maps to shrink the win-condition logic before wiring it across two breadboards.</p>
+					<p>The lab only stocked NAND gates (74HC00 ICs), so every part of the design, the latching move-select, the mutual exclusion, and the win detection, had to be rebuilt from NAND alone. We prototyped the whole thing in Logicly first and used Karnaugh maps to shrink the win-condition logic before wiring it across three breadboards.</p>
 
 					<h2>Tech Stack</h2>
 					<ul class="tech-tags">
@@ -93,7 +93,7 @@
 						<li>A judge button evaluates the round: one player picked wins by default; both picked is scored by rock beats scissors beats paper beats rock, with a draw lighting both win LEDs.</li>
 						<li>The first design was drawn with NOR gates, each move-select block was a six-NOR-gate circuit. The lab only stocked 74HC00 NAND chips, so we re-derived every stage in NAND: converting the NOR logic with DeMorgan&rsquo;s laws, tying NAND gates as inverters wherever a NOT was needed, then duplicating the block for each move and each player.</li>
 						<li>The win-condition logic started as a sprawling circuit, so we built its truth table and used Karnaugh maps to minimize each output (for example W1 = R1&middot;P2&prime; + P1&middot;R2 + P1&middot;P2 + S1&middot;R2&prime;) before implementing the reduced expressions in NAND.</li>
-						<li>The full system was simulated in Logicly before any wiring, then assembled across two breadboards with roughly ten ICs.</li>
+						<li>The full system was simulated in Logicly before any wiring, then assembled across three breadboards with roughly ten ICs.</li>
 					</ul>
 				</div>
 			</div>
