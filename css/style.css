@@ -656,21 +656,24 @@ main > section > h2,
 .carousel--gallery .carousel-track {
 	gap: clamp(.5rem, 1.2vw, 1rem);
 	padding-inline: max(var(--gutter), calc(50vw - 50rem));
+	/* top-align so a slide with a caption can run taller than the rest */
+	align-items: flex-start;
 	/* when the images don't fill the width, sit them centred; `safe` keeps
 	   the start reachable once there are enough to overflow and scroll */
 	justify-content: safe center;
 }
 .carousel--gallery .carousel-slide {
 	flex: 0 0 auto;
+	display: flex;
+	flex-direction: column;
 	width: auto;
-	height: clamp(24rem, 60vw, 44rem);
 	scroll-snap-align: start;
 }
 .carousel--gallery .carousel-slide img,
 .carousel--gallery .carousel-slide video,
 .carousel--gallery .carousel-slide iframe {
 	width: auto;
-	height: 100%;
+	height: clamp(24rem, 60vw, 44rem);
 	max-width: 90vw;
 	aspect-ratio: auto;
 	object-fit: contain;
@@ -679,10 +682,19 @@ main > section > h2,
 /* iframes have no intrinsic size; a <video> keeps its own aspect ratio
    (aspect-ratio:auto above) once the file's dimensions load */
 .carousel--gallery .carousel-slide iframe { aspect-ratio: 16 / 9; }
+.carousel--gallery .carousel-slide figcaption {
+	margin-top: .8rem;
+	max-width: min(46rem, 88vw);
+	font-size: 1.45rem;
+	line-height: 1.4;
+	color: var(--gray);
+}
 .carousel--gallery .carousel-prev { left: max(1rem, calc(50vw - 50rem)); }
 .carousel--gallery .carousel-next { right: max(1rem, calc(50vw - 50rem)); }
 @media (max-width: 40rem) {
-	.carousel--gallery .carousel-slide { height: 80vw; }
+	.carousel--gallery .carousel-slide img,
+	.carousel--gallery .carousel-slide video,
+	.carousel--gallery .carousel-slide iframe { height: 80vw; }
 }
 .carousel-arrow {
 	position: absolute;
