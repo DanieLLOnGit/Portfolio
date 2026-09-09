@@ -683,11 +683,12 @@ main > section > h2,
    (aspect-ratio:auto above) once the file's dimensions load */
 .carousel--gallery .carousel-slide iframe { aspect-ratio: 16 / 9; }
 .carousel--gallery .carousel-slide figcaption {
-	margin-top: .8rem;
+	margin: .8rem auto 0;
 	max-width: min(46rem, 88vw);
 	font-size: 1.45rem;
 	line-height: 1.4;
 	color: var(--gray);
+	text-align: center;
 }
 .carousel--gallery .carousel-prev { left: max(1rem, calc(50vw - 50rem)); }
 .carousel--gallery .carousel-next { right: max(1rem, calc(50vw - 50rem)); }

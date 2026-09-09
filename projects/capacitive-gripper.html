@@ -6,7 +6,7 @@
 	<title>Capacitive Proximity Gripper - Daniel Ye</title>
 	<meta name="description" content="A closed-loop robotic gripper that uses capacitive proximity sensing to detect and grasp objects before contact, self-centering with two independently driven jaws. Research at Columbia's CLUE lab.">
 	<link rel="preload" as="font" type="font/woff2" href="../fonts/teko-700.woff2" crossorigin>
-	<link rel="stylesheet" href="../css/style.css?v=8">
+	<link rel="stylesheet" href="../css/style.css?v=9">
 </head>
 <body data-home="../index.html">
 
@@ -57,14 +57,6 @@
 							<figure class="carousel-slide">
 								<img src="../img/gripper.jpeg" alt="The gripper: two white 3D-printed jaws on Dynamixel servos, mounted on a rotating base" width="1200" height="1125">
 							</figure>
-							<figure class="carousel-slide carousel-slide--caption">
-								<video src="../img/gripper-ionic.mp4" controls playsinline preload="metadata" width="960" height="540"></video>
-								<figcaption>Ionic conductor (a hand): the gripper detects it, closes, holds for 3 seconds, then releases.</figcaption>
-							</figure>
-							<figure class="carousel-slide carousel-slide--caption">
-								<video src="../img/gripper-metallic.mp4" controls playsinline preload="metadata" width="960" height="540"></video>
-								<figcaption>Metallic conductor: the gripper detects it, closes, holds for 3 seconds, then releases.</figcaption>
-							</figure>
 							<figure class="carousel-slide">
 								<img src="../img/gripper-breadboard.jpeg" alt="The PSoC on a QFN breakout board wired up on a breadboard for bring-up" width="1111" height="1200">
 							</figure>
@@ -83,6 +75,26 @@
 					<button type="button" class="carousel-arrow carousel-next" aria-label="Next slide">&rsaquo;</button>
 				</div>
 				<div class="carousel-dots" aria-label="Choose slide"></div>
+			</div>
+
+			<div class="carousel carousel--gallery" id="gripper-demos-carousel">
+				<div class="carousel-frame">
+					<div class="carousel-viewport">
+						<div class="carousel-track">
+							<figure class="carousel-slide carousel-slide--caption">
+								<video src="../img/gripper-ionic.mp4" controls playsinline preload="metadata" width="960" height="540"></video>
+								<figcaption>Ionic conductor (a hand): the gripper detects it, closes, holds for 3 seconds, then releases.</figcaption>
+							</figure>
+							<figure class="carousel-slide carousel-slide--caption">
+								<video src="../img/gripper-metallic.mp4" controls playsinline preload="metadata" width="960" height="540"></video>
+								<figcaption>Metallic conductor: the gripper detects it, closes, holds for 3 seconds, then releases.</figcaption>
+							</figure>
+						</div>
+					</div>
+					<button type="button" class="carousel-arrow carousel-prev" aria-label="Previous demo">&lsaquo;</button>
+					<button type="button" class="carousel-arrow carousel-next" aria-label="Next demo">&rsaquo;</button>
+				</div>
+				<div class="carousel-dots" aria-label="Choose demo"></div>
 			</div>
 
 			<div class="project-cols">
