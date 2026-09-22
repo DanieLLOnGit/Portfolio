@@ -2,6 +2,7 @@
 	var ITEMS = [
 		{ label: 'About', keywords: 'about intro bio columbia electrical engineering', href: '#about' },
 		{ label: 'Projects', keywords: 'projects work portfolio', href: '#projects' },
+		{ label: 'Hackathon Projects', keywords: 'hackathon projects hackmit makecu owlert smart trash nimbus', href: '#hackathon-projects' },
 		{ label: 'Skills', keywords: 'skills languages tools', href: '#skills' },
 		{ label: 'Experience', keywords: 'experience roles jobs internships', href: '#experience' },
 		{ label: 'Contact', keywords: 'contact email phone resume get in touch', href: '#contact' }
